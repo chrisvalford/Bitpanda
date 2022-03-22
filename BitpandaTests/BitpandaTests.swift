@@ -20,11 +20,6 @@ class BitpandaTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
     func testJSONReadPerformance() {
         self.measure() {
             let url = Bundle.main.url(forResource: "data", withExtension: ".json")
@@ -36,9 +31,8 @@ class BitpandaTests: XCTestCase {
             _ = try? decoder.decode(CollectionData.self, from: data)
         }
     }
-    
-    
-    /// Test for any value in the whole sample JSON file.
+
+    /// Test for any value in the whole sample JSON file, as this proves the optional fields in the structs are correct.
     func testJSONRead() {
         let url = Bundle.main.url(forResource: "data", withExtension: ".json")
         guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
