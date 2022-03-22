@@ -25,13 +25,20 @@ class BitpandaTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testJSONReadPerformance() {
         self.measure() {
-            // Put the code you want to measure the time of here.
+            let url = Bundle.main.url(forResource: "data", withExtension: ".json")
+            guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
+                fatalError("Couldn't read data.json file")
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            _ = try? decoder.decode(CollectionData.self, from: data)
         }
     }
     
+    
+    /// Test for any value in the whole sample JSON file.
     func testJSONRead() {
         let url = Bundle.main.url(forResource: "data", withExtension: ".json")
         guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
@@ -40,7 +47,9 @@ class BitpandaTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let decoded = try? decoder.decode(CollectionData.self, from: data)
-        XCTAssert(decoded?.wrapper.type == "collection")
+        // XCTAssert(decoded?.wrapper.type == "collection")
+        let firstFiat = decoded?.wrapper.attributes.fiats.first
+        XCTAssert(firstFiat?.attributes.name == "Euro")
     }
     
 }

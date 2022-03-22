@@ -55,11 +55,12 @@ struct CommodityAttributes: Codable {
     let supportDestinationTag: Bool
     let androidSupportedVersion: String?
     let iosSupportedVersion: String?
-    let circulatingSupply: String
+    let circulatingSupply: String?
     let allowedUnverified: Bool
     let allowedDocumented: Bool
     let allowedVerified: Bool
-    let ieoPhases: [IeoPhase]
+    let measurementUnit: String?
+    let ieoPhases: [IeoPhase?]
     let info: String
     let unavailableReason: String
     let maintenanceReason: String

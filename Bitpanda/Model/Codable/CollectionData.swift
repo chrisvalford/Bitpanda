@@ -25,9 +25,18 @@ struct Wrapper: Codable {
 
 struct CollectionDataAttributes: Codable {
     let cryptocoins: [Commodity]
-    // let commodities: [Commodity] // Broken
+    let commodities: [Commodity] // Broken
     let fiats: [Fiat]
     let wallets: [Wallet]
     let commodityWallets: [Wallet]
-    let fiatwallets: [FiatWallet] // Broken
+    let fiatWallets: [FiatWallet]
+    
+    enum CodingKeys: String, CodingKey {
+        case cryptocoins
+        case commodities
+        case fiats
+        case wallets
+        case commodityWallets
+        case fiatWallets = "fiatwallets"
+    }
 }
