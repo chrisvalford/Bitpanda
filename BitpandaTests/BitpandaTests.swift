@@ -13,7 +13,6 @@ class BitpandaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -31,6 +30,17 @@ class BitpandaTests: XCTestCase {
         self.measure() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testJSONRead() {
+        let url = Bundle.main.url(forResource: "data", withExtension: ".json")
+        guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
+            fatalError("Couldn't read data.json file")
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let decoded = try? decoder.decode(CollectionData.self, from: data)
+        XCTAssert(decoded?.wrapper.type == "collection")
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 struct FiatWallet: Codable, Identifiable {
     let id: String
     let type: String
-    let attributes: WalletAttributes
+    let attributes: FiatWalletAttributes
 }
 
 struct FiatWalletAttributes: Codable {

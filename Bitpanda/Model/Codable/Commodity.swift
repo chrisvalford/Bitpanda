@@ -20,7 +20,7 @@ struct CommodityAttributes: Codable {
     let sort: Int
     let assetTypeName: String
     let assetGroupName: String
-    let urlCheckAddress: URL
+    let urlCheckAddress: String
     let urlCheckTransaction: String
     let buyActive: Bool
     let sellActive: Bool
@@ -42,19 +42,19 @@ struct CommodityAttributes: Codable {
     let avgPrice: String
     let color: String
     let walletWithdrawFee: String
-    let change24h: String
-    let change24hAmount: String
-    let change1w: String
-    let change1wAmount: String
-    let change1m: String
-    let change1mAmount: String
-    let change1y: String
-    let change1yAmount: String
+    let change24H: String
+    let change24HAmount: String
+    let change1W: String
+    let change1WAmount: String
+    let change1M: String
+    let change1MAmount: String
+    let change1Y: String
+    let change1YAmount: String
     let logo: URL
     let logoDark: URL
     let supportDestinationTag: Bool
-    let androidSupportedVersion: String
-    let iosSupportedVersion: String
+    let androidSupportedVersion: String?
+    let iosSupportedVersion: String?
     let circulatingSupply: String
     let allowedUnverified: Bool
     let allowedDocumented: Bool
@@ -65,7 +65,7 @@ struct CommodityAttributes: Codable {
     let maintenanceReason: String
     let walletInfo: String
     let extraInfo: String
-    let investmentInfo: String
+    let investmentInfo: String?
     let infoIntegration: String
     let infoDeu: String
     let infoEng: String
@@ -82,9 +82,9 @@ struct CommodityAttributes: Codable {
     let extraInfoDeu: String
     let extraInfoEng: String
     let extraInfoFra: String
-    let investmentInfoDeu: String
-    let investmentInfoEng: String
-    let investmentInfoFra: String
+    let investmentInfoDeu: String?
+    let investmentInfoEng: String?
+    let investmentInfoFra: String?
     let infoIntegrationDeu: String
     let infoIntegrationEng: String
     let infoIntegrationFra: String

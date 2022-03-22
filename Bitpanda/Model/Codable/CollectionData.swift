@@ -10,15 +10,24 @@ import Foundation
 
 // Inside of "data"
 struct CollectionData: Codable {
+    
+    let wrapper: Wrapper
+    
+    enum CodingKeys: String, CodingKey {
+        case wrapper = "data"
+    }
+}
+
+struct Wrapper: Codable {
     let type: String
     let attributes: CollectionDataAttributes
 }
 
 struct CollectionDataAttributes: Codable {
     let cryptocoins: [Commodity]
-    let commodities: [Commodity]
+    // let commodities: [Commodity] // Broken
     let fiats: [Fiat]
     let wallets: [Wallet]
     let commodityWallets: [Wallet]
-    let fiatwallets: [FiatWallet]
+    let fiatwallets: [FiatWallet] // Broken
 }
