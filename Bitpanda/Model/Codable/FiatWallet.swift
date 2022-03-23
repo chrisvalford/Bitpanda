@@ -3,35 +3,21 @@
 //  Bitpanda
 //
 //  Created by Christopher Alford on 22/3/22.
-//  Copyright © 2022 Digital+Marine. All rights reserved.
+//  Copyright © 2022 anapp4that. All rights reserved.
 //
 
 import Foundation
 
-struct FiatWallet: Codable, Identifiable {
-    let id: String
-    let type: String
-    let attributes: FiatWalletAttributes
+public struct FiatWallet: Codable, Identifiable {
+    public let id: String
+    public let type: String
+    public let attributes: FiatWalletAttributes
 }
 
-struct FiatWalletAttributes: Codable {
-    let fiatId: String
-    let fiatSymbol: String
-    let balance: String
-    let name: String
-    let pendingTransactionsCount: Int
+public struct FiatWalletAttributes: Codable {
+    public let fiatId: String
+    public let fiatSymbol: String
+    public let balance: String
+    public let name: String
+    public let pendingTransactionsCount: Int
 }
-
-/*
- {
-   "type": "fiat_wallet",
-   "attributes": {
-     "fiat_id": "1",
-     "fiat_symbol": "EUR",
-     "balance": "74.63000000",
-     "name": "EUR Wallet",
-     "pending_transactions_count": 1
-   },
-   "id": "4fc17f23-83e8-4974-a149-569fdad72a81"
- },
- */

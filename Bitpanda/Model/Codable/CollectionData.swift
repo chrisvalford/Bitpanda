@@ -3,33 +3,33 @@
 //  Bitpanda
 //
 //  Created by Christopher Alford on 22/3/22.
-//  Copyright © 2022 Digital+Marine. All rights reserved.
+//  Copyright © 2022 anapp4that. All rights reserved.
 //
 
 import Foundation
 
 // Inside of "data"
-struct CollectionData: Codable {
+public struct CollectionData: Codable {
     
-    let wrapper: Wrapper
+    public let wrapper: Wrapper
     
     enum CodingKeys: String, CodingKey {
         case wrapper = "data"
     }
 }
 
-struct Wrapper: Codable {
-    let type: String
-    let attributes: CollectionDataAttributes
+public struct Wrapper: Codable {
+    public let type: String
+    public let attributes: CollectionDataAttributes
 }
 
-struct CollectionDataAttributes: Codable {
-    let cryptocoins: [Commodity]
-    let commodities: [Commodity] // Broken
-    let fiats: [Fiat]
-    let wallets: [Wallet]
-    let commodityWallets: [Wallet]
-    let fiatWallets: [FiatWallet]
+public struct CollectionDataAttributes: Codable {
+    public let cryptocoins: [Commodity]
+    public let commodities: [Commodity]
+    public let fiats: [Fiat]
+    public let wallets: [Wallet]
+    public let commodityWallets: [Wallet]
+    public let fiatWallets: [FiatWallet]
     
     enum CodingKeys: String, CodingKey {
         case cryptocoins
