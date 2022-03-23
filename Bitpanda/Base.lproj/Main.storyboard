@@ -26,13 +26,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvJ-IZ-DkR">
+                                <rect key="frame" x="185" y="468" width="44" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Y2g-2Z-d9h"/>
+                                    <constraint firstAttribute="height" constant="44" id="tUk-F2-3T1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hMV-Rm-KoE" firstAttribute="centerX" secondItem="z5X-nI-jdy" secondAttribute="centerX" id="5lE-84-Yxc"/>
+                            <constraint firstItem="mvJ-IZ-DkR" firstAttribute="centerX" secondItem="z5X-nI-jdy" secondAttribute="centerX" id="VPB-WG-FY0"/>
                             <constraint firstItem="hMV-Rm-KoE" firstAttribute="centerY" secondItem="z5X-nI-jdy" secondAttribute="centerY" id="YkO-Hv-VMv"/>
+                            <constraint firstItem="mvJ-IZ-DkR" firstAttribute="top" secondItem="hMV-Rm-KoE" secondAttribute="bottom" constant="10" id="x5R-fU-tkK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="mvJ-IZ-DkR" id="kQq-5D-UQ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7u-nm-7gt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
