@@ -50,7 +50,7 @@ struct CommodityView {
 
 class AssetsViewModel {
     
-    var selectedAsset: AssetsSelection = .commodities
+    var selectedAsset: AssetsSelection = .cryptocoins
     var fiatData: [FiatView] = []
     var commodityData: [CommodityView] = []
     
@@ -77,13 +77,15 @@ class AssetsViewModel {
             populateFiats()
             
         case .cryptocoins:
-            commodityData = dataApi.cryptocoins.map( {
+            commodityData = dataApi.cryptocoins
+                .map( {
                     CommodityView(iconLight: $0.attributes.logo,
                                   iconDark: $0.attributes.logoDark,
                                   name: $0.attributes.name,
                                   symbol: $0.attributes.symbol,
                                   averagePrice: $0.attributes.avgPrice)
                 } )
+                //TODO: .sorted { $0.name < $1.name }
             
         case .commodities:
             commodityData = dataApi.commodities.map( {

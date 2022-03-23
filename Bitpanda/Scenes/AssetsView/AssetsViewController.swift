@@ -50,7 +50,7 @@ class AssetsViewController: UIViewController {
         assetSelector.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         tableView.topAnchor.constraint(equalTo: assetSelector.bottomAnchor, constant: 8).isActive = true
-        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
