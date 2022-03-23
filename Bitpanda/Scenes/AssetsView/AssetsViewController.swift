@@ -10,23 +10,32 @@ import UIKit
 
 class AssetsViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIView!
+    let assetCellId = "AssetCell"
+    let fiatCellId = "FiatCell"
     
     private let viewModel = AssetsViewModel()
+    
+    lazy var assetSelector: UISegmentedControl = {
+        let segmented = UISegmentedControl(items: AssetsSelection.allValues())
+        segmented.translatesAutoresizingMaskIntoConstraints = false
+        segmented.selectedSegmentIndex = viewModel.selectedAsset.rawValue
+        return segmented
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.dataSource = self
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.register(AssetTableViewCell.self, forCellReuseIdentifier: assetCellId)
+        return tv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var path: String
-        if self.traitCollection.userInterfaceStyle == .dark {
-            path = "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/xpt_dark.svg"
-        } else {
-            path = "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/xpt.svg"
-        }
-        guard let svg = SVGImage(frame: CGRect(x: 0, y: 0, width: 44, height: 44), path: path) else {
-            print("Invalid url")
-            return
-        }
-        imageView.addSubview(svg)
+        viewModel.select(assetsSelection: viewModel.selectedAsset)
+        self.view.addSubview(assetSelector)
+        self.view.addSubview(tableView)
+        addContsraints()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +43,46 @@ class AssetsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    private func addContsraints() {
+        assetSelector.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        assetSelector.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        assetSelector.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        assetSelector.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        tableView.topAnchor.constraint(equalTo: assetSelector.bottomAnchor, constant: 8).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+}
 
+extension AssetsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch viewModel.selectedAsset {
+        case .cryptocoins, .commodities:
+            return viewModel.commodityData.count
+        case .fiats:
+            return viewModel.fiatData.count
+        case .all:
+            return 0 // TODO:
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch viewModel.selectedAsset {
+        case .cryptocoins, .commodities:
+            let cell = tableView.dequeueReusableCell(withIdentifier: assetCellId, for: indexPath) as! AssetTableViewCell
+            cell.viewModel = viewModel.commodityData[indexPath.row]
+            cell.layout()
+            return cell
+        case .fiats:
+            return UITableViewCell()
+        case .all:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    
 }
 

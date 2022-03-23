@@ -8,20 +8,51 @@
 
 import Foundation
 
+enum AssetsSelection: Int, CustomStringConvertible {
+    case all = 0, cryptocoins, commodities, fiats
+    
+    static func allValues() -> [String] {
+        return [all, cryptocoins, commodities, fiats].map({$0.description})
+    }
+    
+    static func count() -> Int {
+        return allValues().count
+    }
+    
+    public var description: String {
+        switch self {
+        case .all:
+            return "All"
+        case .cryptocoins:
+            return "Cryptocoins"
+        case .commodities:
+            return "Commodities"
+        case .fiats:
+            return "Fiats"
+        }
+    }
+}
+
+struct FiatView {
+    let iconLight: URL
+    let iconDark: URL
+    let name: String
+    let symbol: String
+}
+
+struct CommodityView {
+    let iconLight: URL
+    let iconDark: URL
+    let name: String
+    let symbol: String
+    let averagePrice: String
+}
+
 class AssetsViewModel {
     
+    var selectedAsset: AssetsSelection = .commodities
     var fiatData: [FiatView] = []
-    
-    struct FiatView {
-        let iconLight: URL
-        let iconDark: URL
-        let name: String
-        let symbol: String
-    }
-    
-    enum AssetsSelection {
-        case all, cryptocoins, commodities, fiats
-    }
+    var commodityData: [CommodityView] = []
     
     private var dataApi: DataAPI
     
@@ -31,18 +62,37 @@ class AssetsViewModel {
     }
     
     func select(assetsSelection: AssetsSelection) {
-        var commodities: [Commodity] = []
         
         switch assetsSelection {
         case .all:
-            commodities = dataApi.cryptocoins
+            var commodities = dataApi.cryptocoins
             commodities.append(contentsOf: dataApi.commodities)
+            commodityData = commodities.map( {
+                    CommodityView(iconLight: $0.attributes.logo,
+                                  iconDark: $0.attributes.logoDark,
+                                  name: $0.attributes.name,
+                                  symbol: $0.attributes.symbol,
+                                  averagePrice: $0.attributes.avgPrice)
+                } )
             populateFiats()
             
         case .cryptocoins:
-            commodities = dataApi.cryptocoins
+            commodityData = dataApi.cryptocoins.map( {
+                    CommodityView(iconLight: $0.attributes.logo,
+                                  iconDark: $0.attributes.logoDark,
+                                  name: $0.attributes.name,
+                                  symbol: $0.attributes.symbol,
+                                  averagePrice: $0.attributes.avgPrice)
+                } )
+            
         case .commodities:
-            commodities = dataApi.commodities
+            commodityData = dataApi.commodities.map( {
+                    CommodityView(iconLight: $0.attributes.logo,
+                                  iconDark: $0.attributes.logoDark,
+                                  name: $0.attributes.name,
+                                  symbol: $0.attributes.symbol,
+                                  averagePrice: $0.attributes.avgPrice)
+                } )
         case .fiats:
             populateFiats()
         }

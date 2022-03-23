@@ -15,9 +15,8 @@ import UIKit
 
 class SVGImage: UIView {
     
-    init?(frame: CGRect, path: String) {
+    init?(frame: CGRect, url: URL) {
         super.init(frame: frame)
-        guard let url = URL(string: path) else { return nil }
         let imageView = SVGImageView.init(contentsOf: url)
         imageView.frame = self.bounds
         imageView.contentMode = .scaleAspectFit
