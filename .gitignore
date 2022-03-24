@@ -3,7 +3,6 @@
 build/
 /.build
 /Packages
-/*.xcodeproj
 #personal settings
 *.pbxuser
 !default.pbxuser
