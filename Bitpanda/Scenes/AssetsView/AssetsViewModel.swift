@@ -35,7 +35,7 @@ class AssetsViewModel {
             print("Selected cryptocoins \(dataApi.cryptocoins.count)")
             cryptocoinData = dataApi.cryptocoins
                 .filter { $0.type == "cryptocoin" }
-                .sorted { $0.attributes.name < $1.attributes.name }
+                .sorted { $0.attributes.sort < $1.attributes.sort }
                 .map( {
                     CryptocoinView($0.attributes)
                 } )
@@ -43,21 +43,18 @@ class AssetsViewModel {
             print("Selected commodities \(dataApi.commodities.count)")
             commodityData = dataApi.commodities
                 .filter { $0.type == "commodity" }
-                .sorted { $0.attributes.name < $1.attributes.name }
+                .sorted { $0.attributes.sort < $1.attributes.sort }
                 .map( {
                     CommodityView($0.attributes)
                 } )
         case .fiats:
-            populateFiats()
+            fiatData = dataApi.fiats
+                .filter({ $0.attributes.hasWallets })
+                .sorted { $0.attributes.symbol < $1.attributes.symbol }
+                .map( {
+                    FiatView($0.attributes)
+                } )
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AssetsUpdated"), object: nil, userInfo: nil)
-    }
-    
-    private func populateFiats() {
-        fiatData = dataApi.fiats
-            .filter({ $0.attributes.hasWallets })
-            .map( {
-                FiatView($0.attributes)
-            } )
     }
 }
