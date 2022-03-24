@@ -13,4 +13,11 @@ struct FiatView {
     let iconDark: URL
     let name: String
     let symbol: String
+    
+    init(_ attributes: FiatAttributes) {
+        iconLight = attributes.logo
+        iconDark = attributes.logoDark
+        name = attributes.name
+        symbol = attributes.symbol
+    }
 }

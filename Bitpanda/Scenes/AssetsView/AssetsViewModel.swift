@@ -10,13 +10,14 @@ import Foundation
 
 class AssetsViewModel {
     
-    var selectedAsset: AssetsSelection = .commodities {
+    var selectedAsset: AssetsSelection = .cryptocoins {
         didSet {
             self.select(assetsSelection: selectedAsset)
         }
     }
     var fiatData: [FiatView] = []
     var commodityData: [CommodityView] = []
+    var cryptocoinData: [CryptocoinView] = []
     
     private var dataApi: DataAPI
     
@@ -26,27 +27,22 @@ class AssetsViewModel {
     }
     
     func select(assetsSelection: AssetsSelection) {
+        fiatData.removeAll()
+        commodityData.removeAll()
+        cryptocoinData.removeAll()
         switch assetsSelection {
-        case .all:
-            var commodities = dataApi.cryptocoins
-            commodities.append(contentsOf: dataApi.commodities)
-            commodityData = commodities.map( {
-                CommodityView($0.attributes)
-            } )
-            populateFiats()
-            
         case .cryptocoins:
             print("Selected cryptocoins \(dataApi.cryptocoins.count)")
-            commodityData = dataApi.cryptocoins
+            cryptocoinData = dataApi.cryptocoins
+                .filter { $0.type == "cryptocoin" }
                 .sorted { $0.attributes.name < $1.attributes.name }
                 .map( {
-                    CommodityView($0.attributes)
+                    CryptocoinView($0.attributes)
                 } )
-            //TODO: .sorted { $0.name < $1.name }
-            
         case .commodities:
             print("Selected commodities \(dataApi.commodities.count)")
             commodityData = dataApi.commodities
+                .filter { $0.type == "commodity" }
                 .sorted { $0.attributes.name < $1.attributes.name }
                 .map( {
                     CommodityView($0.attributes)
@@ -54,16 +50,14 @@ class AssetsViewModel {
         case .fiats:
             populateFiats()
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AssetsUpdated"), object: nil, userInfo: nil)
     }
     
     private func populateFiats() {
         fiatData = dataApi.fiats
             .filter({ $0.attributes.hasWallets })
             .map( {
-                FiatView(iconLight: $0.attributes.logo,
-                         iconDark: $0.attributes.logoDark,
-                         name: $0.attributes.name,
-                         symbol: $0.attributes.symbol)
+                FiatView($0.attributes)
             } )
     }
 }

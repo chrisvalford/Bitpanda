@@ -1,5 +1,5 @@
 //
-//  AssetTableViewCell.swift
+//  CryptocoinTableViewCell.swift
 //  Bitpanda
 //
 //  Created by Christopher Alford on 23/3/22.
@@ -15,9 +15,9 @@ import UIKit
  - Each price must take the regional location of the device into account for formatting. For example 1298.99 euros in Austria would be formatted to 1.298,99 € but in the USA, it would be formatted to $1,298.99.
  */
 
-class AssetTableViewCell: UITableViewCell {
+class CryptocoinTableViewCell: UITableViewCell {
     
-    var viewModel: CommodityView?
+    var viewModel: CryptocoinView?
     
     let iconTop = 4.0
     let iconLeft = 0.0

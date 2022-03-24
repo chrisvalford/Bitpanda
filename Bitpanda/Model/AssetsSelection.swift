@@ -9,10 +9,10 @@
 import Foundation
 
 enum AssetsSelection: Int, CustomStringConvertible {
-    case all = 0, cryptocoins, commodities, fiats
+    case cryptocoins = 0, commodities, fiats
 
     static func allValues() -> [String] {
-        return [all, cryptocoins, commodities, fiats].map({$0.description})
+        return [cryptocoins, commodities, fiats].map({$0.description})
     }
 
     static func count() -> Int {
@@ -21,8 +21,6 @@ enum AssetsSelection: Int, CustomStringConvertible {
 
     public var description: String {
         switch self {
-        case .all:
-            return "All"
         case .cryptocoins:
             return "Cryptocoins"
         case .commodities:

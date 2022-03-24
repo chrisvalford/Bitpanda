@@ -1,5 +1,5 @@
 //
-//  AssetTableViewCell.swift
+//  FiatTableViewCell.swift
 //  Bitpanda
 //
 //  Created by Christopher Alford on 23/3/22.
@@ -9,15 +9,12 @@
 import UIKit
 
 /*
- Each list item must contain the asset's icon, name, symbol, average price.
- - Each price must have the number of decimals described by precision for fiat price (see cryptocoin/commodity properties in the Masterdata).
- - Each price must also show the fiat symbol, as the prices are in euro fiat.
- - Each price must take the regional location of the device into account for formatting. For example 1298.99 euros in Austria would be formatted to 1.298,99 € but in the USA, it would be formatted to $1,298.99.
+ - Each list item must contain the fiat's icon, name, symbol .
  */
 
-class AssetTableViewCell: UITableViewCell {
+class FiatTableViewCell: UITableViewCell {
     
-    var viewModel: CommodityView?
+    var viewModel: FiatView?
     
     let iconTop = 4.0
     let iconLeft = 0.0
@@ -58,21 +55,10 @@ class AssetTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var averagePriceView: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .right
-        label.text = "Average price: \(viewModel?.averagePrice ?? "")"
-        label.sizeToFit()
-        return label
-    }()
-    
     func layout() {
         self.addSubview(iconView)
         self.addSubview(nameView)
         self.addSubview(symbolView)
-        self.addSubview(averagePriceView)
         NSLayoutConstraint.activate([
             iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: iconTop),
             iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: iconLeft),
@@ -82,10 +68,7 @@ class AssetTableViewCell: UITableViewCell {
             
             symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
-            symbolView.widthAnchor.constraint(equalToConstant: 54),
-
-            averagePriceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            averagePriceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 8)
+            symbolView.widthAnchor.constraint(equalToConstant: 54)
         ])
     }
 

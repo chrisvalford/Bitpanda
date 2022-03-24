@@ -14,7 +14,7 @@ import Foundation
 public class DataAPI {
     
     // From struct CollectionDataAttributes
-    public var cryptocoins: [Commodity] = []
+    public var cryptocoins: [Cryptocoin] = []
     public var commodities: [Commodity] = []
     public var fiats: [Fiat] = []
     public var wallets: [Wallet] = []
@@ -30,8 +30,8 @@ public class DataAPI {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let decoded = try? decoder.decode(CollectionData.self, from: data)
-        cryptocoins = decoded?.wrapper.attributes.cryptocoins ?? []
         commodities = decoded?.wrapper.attributes.commodities ?? []
+        cryptocoins = decoded?.wrapper.attributes.cryptocoins ?? []
         fiats = decoded?.wrapper.attributes.fiats ?? []
         wallets = decoded?.wrapper.attributes.wallets ?? []
         commodityWallets = decoded?.wrapper.attributes.commodityWallets ?? []

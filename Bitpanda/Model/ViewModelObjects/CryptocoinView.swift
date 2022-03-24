@@ -1,5 +1,5 @@
 //
-//  CommodityView.swift
+//  CryptocoinView.swift
 //  Bitpanda
 //
 //  Created by Christopher Alford on 23/3/22.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct CommodityView {
+struct CryptocoinView {
     let iconLight: URL
     let iconDark: URL
     let name: String
     let symbol: String
     let averagePrice: String
 
-    init(_ attributes: CommodityAttributes) {
+    init(_ attributes: CryptocoinAttributes) {
         iconLight = attributes.logo
         iconDark = attributes.logoDark
         name = attributes.name
@@ -23,3 +23,4 @@ struct CommodityView {
         averagePrice = attributes.avgPrice.formatCurrency(fractionalCount: attributes.precisionForFiatPrice)
     }
 }
+

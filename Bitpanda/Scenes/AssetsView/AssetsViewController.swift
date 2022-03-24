@@ -11,6 +11,7 @@ import UIKit
 class AssetsViewController: UIViewController {
     
     let assetCellId = "AssetCell"
+    let cryptocoinCellId = "CryptocoinCell"
     let fiatCellId = "FiatCell"
     
     private let viewModel = AssetsViewModel()
@@ -28,8 +29,19 @@ class AssetsViewController: UIViewController {
         tv.dataSource = self
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(AssetTableViewCell.self, forCellReuseIdentifier: assetCellId)
+        tv.register(CryptocoinTableViewCell.self, forCellReuseIdentifier: cryptocoinCellId)
+        tv.register(FiatTableViewCell.self, forCellReuseIdentifier: fiatCellId)
         return tv
     }()
+    
+// TODO:
+// The view building process should be completed in loadView()
+// Need to ensure the data has 'empty' values to do this and then populate the table view in viewDidLoad()
+//    override func loadView() {
+//        self.view.addSubview(assetSelector)
+//        self.view.addSubview(tableView)
+//        addContsraints()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +49,14 @@ class AssetsViewController: UIViewController {
         self.view.addSubview(assetSelector)
         self.view.addSubview(tableView)
         addContsraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "AssetsUpdated"), object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,10 +67,12 @@ class AssetsViewController: UIViewController {
     @objc
     private func segmentedValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedAsset = AssetsSelection(rawValue: sender.selectedSegmentIndex) ?? .commodities
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.tableView.reloadData()
-        }
+    }
 
+    @objc
+    func reloadData(notification : NSNotification) {
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        self.tableView.reloadData()
     }
 
     private func addContsraints() {
@@ -69,30 +91,33 @@ class AssetsViewController: UIViewController {
 extension AssetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewModel.selectedAsset {
-        case .cryptocoins, .commodities:
+        case .cryptocoins:
+            return viewModel.cryptocoinData.count
+        case .commodities:
             return viewModel.commodityData.count
         case .fiats:
             return viewModel.fiatData.count
-        case .all:
-            return 0 // TODO:
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch viewModel.selectedAsset {
-        case .cryptocoins, .commodities:
+        case .commodities:
             let cell = tableView.dequeueReusableCell(withIdentifier: assetCellId, for: indexPath) as! AssetTableViewCell
             cell.viewModel = viewModel.commodityData[indexPath.row]
             cell.layout()
             return cell
+        case .cryptocoins:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cryptocoinCellId, for: indexPath) as! CryptocoinTableViewCell
+            cell.viewModel = viewModel.cryptocoinData[indexPath.row]
+            cell.layout()
+            return cell
         case .fiats:
-            return UITableViewCell()
-        case .all:
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: fiatCellId, for: indexPath) as! FiatTableViewCell
+            cell.viewModel = viewModel.fiatData[indexPath.row]
+            cell.layout()
+            return cell
         }
-        
     }
-    
-    
 }
 
