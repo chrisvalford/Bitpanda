@@ -24,7 +24,7 @@ public struct Wrapper: Codable {
 }
 
 public struct CollectionDataAttributes: Codable {
-    public let cryptocoins: [Commodity]
+    public let cryptocoins: [Cryptocoin]
     public let commodities: [Commodity]
     public let fiats: [Fiat]
     public let wallets: [Wallet]
