@@ -58,14 +58,14 @@ extension WalletsViewController: UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatWalletCellId, for: indexPath) as! FiatWalletTableViewCell
             cell.viewModel = viewModel.walletData[indexPath.section][indexPath.row]
+            cell.layer.borderWidth = 1.0
+            cell.layer.borderColor = self.traitCollection.userInterfaceStyle == .dark ? UIColor.gray.cgColor : UIColor.lightGray.cgColor
             cell.layout()
-            cell.backgroundColor = .blue
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: walletCellId, for: indexPath) as! WalletTableViewCell
             cell.viewModel = viewModel.walletData[indexPath.section][indexPath.row]
             cell.layout()
-            cell.backgroundColor = indexPath.section == 0 ? .green : .yellow
             return cell
         }
     }

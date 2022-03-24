@@ -40,7 +40,7 @@ struct WalletView: Identifiable {
         symbol = attributes.cryptocoinSymbol
         pendingTransactionCount = attributes.pendingTransactionsCount
         isDefault = attributes.isDefault
-        balance = attributes.balance
+        balance = attributes.balance.removeTrailingZeros()
         self.iconLight = icon.0
         self.iconDark = icon.1
     }
@@ -51,8 +51,10 @@ struct WalletView: Identifiable {
         self.id = attributes.fiatId
         name = attributes.name
         symbol = attributes.fiatSymbol
-        balance = attributes.balance
+        balance = attributes.balance.removeTrailingZeros()
         self.iconLight = icon.0
         self.iconDark = icon.1
     }
 }
+
+// averagePrice = attributes.avgPrice.formatCurrency(fractionalCount: attributes.precisionForFiatPrice)

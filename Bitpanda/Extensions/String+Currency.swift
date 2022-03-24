@@ -29,4 +29,11 @@ extension String {
             .multiplying(by: increment)
         return formatter.string(from: number) ?? ""
     }
+    
+    func removeTrailingZeros() -> String {
+        return self.replacingOccurrences(of: #"^([\d,]+)$|^([\d,]+)\.0*$|^([\d,]+\.[0-9]*?)0*$"#,
+                                             with: "$1$2$3",
+                                             options: .regularExpression,
+                                             range: nil)
+    }
 }

@@ -79,7 +79,6 @@ class WalletTableViewCell: UITableViewCell {
             
             balanceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             balanceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 44),
-            balanceView.widthAnchor.constraint(equalToConstant: 150)
         ])
     }
 
