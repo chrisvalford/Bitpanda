@@ -24,8 +24,8 @@ import Foundation
 struct WalletView: Identifiable {
     let uuid: String
     let id: String
-//    let iconLight: URL
-//    let iconDark: URL
+    let iconLight: URL?
+    let iconDark: URL?
     let name: String
     let symbol: String
     let balance: String
@@ -33,7 +33,7 @@ struct WalletView: Identifiable {
     var isDefault: Bool = false
     var isFiat: Bool = false
     
-    init(id: String, attributes: WalletAttributes) {
+    init(id: String, attributes: WalletAttributes, icon: (URL?,URL?)) {
         uuid = id
         self.id = attributes.cryptocoinId
         name = attributes.name
@@ -41,18 +41,18 @@ struct WalletView: Identifiable {
         pendingTransactionCount = attributes.pendingTransactionsCount
         isDefault = attributes.isDefault
         balance = attributes.balance
-//        iconLight = attributes.logo
-//        iconDark = attributes.logoDark
+        self.iconLight = icon.0
+        self.iconDark = icon.1
     }
     
-    init(id: String, attributes: FiatWalletAttributes) {
+    init(id: String, attributes: FiatWalletAttributes, icon: (URL?,URL?)) {
         uuid = id
         isFiat = true
         self.id = attributes.fiatId
         name = attributes.name
         symbol = attributes.fiatSymbol
         balance = attributes.balance
-//        iconLight = attributes.logo
-//        iconDark = attributes.logoDark
+        self.iconLight = icon.0
+        self.iconDark = icon.1
     }
 }

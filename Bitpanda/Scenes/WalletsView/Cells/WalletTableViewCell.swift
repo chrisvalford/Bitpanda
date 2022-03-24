@@ -19,17 +19,16 @@ class WalletTableViewCell: UITableViewCell {
     
     private lazy var iconView: UIView = {
         let view = UIView(frame: .zero)
-// TODO:
-//        guard let path = self.traitCollection.userInterfaceStyle == .dark ? viewModel?.iconDark : viewModel?.iconLight else {
-//            print("Invalid url")
-//            return UIView()
-//        }
-//        guard let svg = SVGImage(frame: CGRect(x: iconTop, y: iconLeft, width: iconWidth, height: iconHeight), url: path) else {
-//            print("Invalid SVG")
-//            return UIView()
-//        }
-//        svg.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(svg)
+        guard let path = self.traitCollection.userInterfaceStyle == .dark ? viewModel?.iconDark : viewModel?.iconLight else {
+            print("Invalid url")
+            return UIView()
+        }
+        guard let svg = SVGImage(frame: CGRect(x: iconTop, y: iconLeft, width: iconWidth, height: iconHeight), url: path) else {
+            print("Invalid SVG")
+            return UIView()
+        }
+        svg.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(svg)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -79,7 +78,7 @@ class WalletTableViewCell: UITableViewCell {
             symbolView.widthAnchor.constraint(equalToConstant: 54),
             
             balanceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            balanceView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
+            balanceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 44),
             balanceView.widthAnchor.constraint(equalToConstant: 150)
         ])
     }

@@ -163,11 +163,29 @@
 			isa = PBXGroup;
 			children = (
 				2FAED57D27E9F0860067CAE8 /* WalletsViewController.swift */,
-				2F0CBD6227ECBFA00038714E /* WalletTableViewCell.swift */,
-				2F0CBD6427ECBFB30038714E /* FiatWalletTableViewCell.swift */,
 				2F0CBD5C27ECA8890038714E /* WalletsViewModel.swift */,
+				2F0CBD6E27ECC64E0038714E /* Cells */,
 			);
 			path = WalletsView;
+			sourceTree = "<group>";
+		};
+		2F0CBD6D27ECC63C0038714E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */,
+				2F0CBD5227EC82FC0038714E /* CryptocoinTableViewCell.swift */,
+				2F0CBD4C27EC79400038714E /* FiatTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F0CBD6E27ECC64E0038714E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F0CBD6227ECBFA00038714E /* WalletTableViewCell.swift */,
+				2F0CBD6427ECBFB30038714E /* FiatWalletTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		2F1E234927E9E6C500399315 /* Frameworks */ = {
@@ -182,10 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				2FAED57A27E9F07B0067CAE8 /* AssetsViewController.swift */,
-				2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */,
-				2F0CBD5227EC82FC0038714E /* CryptocoinTableViewCell.swift */,
-				2F0CBD4C27EC79400038714E /* FiatTableViewCell.swift */,
 				2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */,
+				2F0CBD6D27ECC63C0038714E /* Cells */,
 			);
 			path = AssetsView;
 			sourceTree = "<group>";

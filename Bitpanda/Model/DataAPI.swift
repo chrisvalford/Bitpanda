@@ -6,7 +6,7 @@
 //  Copyright © 2022 anapp4that. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Simple Data API using the supplied JSON
 /// Will be replace with remote service which caches the json string
@@ -36,5 +36,24 @@ public class DataAPI {
         wallets = decoded?.wrapper.attributes.wallets ?? []
         commodityWallets = decoded?.wrapper.attributes.commodityWallets ?? []
         fiatWallets = decoded?.wrapper.attributes.fiatWallets ?? []
+    }
+    
+    // "cryptocoin_id": "8", for wallet and commodityWallet
+    func walletImage(forId: String) -> (URL?,URL?) {
+        if let cryptocoin = cryptocoins.first(where: { $0.id == forId }) {
+            return (cryptocoin.attributes.logo, cryptocoin.attributes.logoDark)
+        }
+        if let commodity = commodities.first(where: { $0.id == forId }) {
+            return (commodity.attributes.logo, commodity.attributes.logoDark)
+        }
+        return (nil, nil)
+    }
+    
+    // "fiat_id": "4",
+    func fiatWalletImage(forId: String) -> (URL?, URL?) {
+        if let fiat = fiats.first(where: { $0.id == forId }) {
+            return (fiat.attributes.logo, fiat.attributes.logoDark)
+        }
+        return (nil, nil)
     }
 }
