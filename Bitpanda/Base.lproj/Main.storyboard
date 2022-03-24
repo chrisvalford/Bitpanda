@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20036.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0KM-1P-wYr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20036.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bnS-Ed-fkX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,23 +8,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Assets View Controller-->
-        <scene sceneID="0fr-CO-TDk">
+        <!--Item 2-->
+        <scene sceneID="eug-2N-N1O">
             <objects>
-                <viewController id="0KM-1P-wYr" customClass="AssetsViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GQ6-rT-iha" customClass="WalletsViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xck-h2-lS7"/>
-                        <viewControllerLayoutGuide type="bottom" id="jAh-3k-rVH"/>
+                        <viewControllerLayoutGuide type="top" id="fQp-oX-VZd"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCk-pS-CjD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z5X-nI-jdy">
+                    <view key="view" contentMode="scaleToFill" id="KGl-VO-GGm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="r9x-z7-mw5"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r7u-nm-7gt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UgQ-pe-Lbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-409" y="-87"/>
+            <point key="canvasLocation" x="826" y="-161"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="Hq7-0W-vIl">
+            <objects>
+                <viewController id="LHO-Oz-df6" customClass="AssetsViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AbE-6w-SYt"/>
+                        <viewControllerLayoutGuide type="bottom" id="o3n-hg-el7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gSn-na-Oxg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="60U-km-WJz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8r-dF-Y3W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-161"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="0zh-ny-ms2">
+            <objects>
+                <tabBarController id="bnS-Ed-fkX" customClass="TabBarViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aUE-dd-2uT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aPy-BA-6wx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-587" y="-161"/>
         </scene>
     </scenes>
     <resources>

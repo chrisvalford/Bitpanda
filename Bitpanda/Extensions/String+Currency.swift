@@ -21,7 +21,6 @@ extension String {
                                              raiseOnUnderflow: false,
                                              raiseOnDivideByZero: false)
         
-      
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         let number = NSDecimalNumber(string: self)
