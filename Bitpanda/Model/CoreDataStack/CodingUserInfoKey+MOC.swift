@@ -3,7 +3,7 @@
 //  Bitpanda
 //
 //  Created by Christopher Alford on 22/03/2022.
-//  Copyright (c) 2022 anapp4that.com. All rights reserved.
+//  Copyright (c) 2022 anapp4that. All rights reserved.
 //
 
 import Foundation

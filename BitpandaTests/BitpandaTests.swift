@@ -3,7 +3,7 @@
 //  BitpandaTests
 //
 //  Created by Christopher Alford on 22/03/2022.
-//  Copyright (c) 2022 anapp4that.com. All rights reserved.
+//  Copyright (c) 2022 anapp4that. All rights reserved.
 //
 
 import UIKit
@@ -13,7 +13,6 @@ class BitpandaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -21,16 +20,30 @@ class BitpandaTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testJSONReadPerformance() {
         self.measure() {
-            // Put the code you want to measure the time of here.
+            let url = Bundle.main.url(forResource: "data", withExtension: ".json")
+            guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
+                fatalError("Couldn't read data.json file")
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            _ = try? decoder.decode(CollectionData.self, from: data)
         }
+    }
+
+    /// Test for any value in the whole sample JSON file, as this proves the optional fields in the structs are correct.
+    func testJSONRead() {
+        let url = Bundle.main.url(forResource: "data", withExtension: ".json")
+        guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
+            fatalError("Couldn't read data.json file")
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let decoded = try? decoder.decode(CollectionData.self, from: data)
+        // XCTAssert(decoded?.wrapper.type == "collection")
+        let firstFiat = decoded?.wrapper.attributes.fiats.first
+        XCTAssert(firstFiat?.attributes.name == "Euro")
     }
     
 }
