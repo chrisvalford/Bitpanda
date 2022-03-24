@@ -19,6 +19,7 @@ class AssetsViewController: UIViewController {
         let segmented = UISegmentedControl(items: AssetsSelection.allValues())
         segmented.translatesAutoresizingMaskIntoConstraints = false
         segmented.selectedSegmentIndex = viewModel.selectedAsset.rawValue
+        segmented.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
         return segmented
     }()
     
@@ -41,6 +42,15 @@ class AssetsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @objc
+    private func segmentedValueChanged(_ sender: UISegmentedControl) {
+        viewModel.selectedAsset = AssetsSelection(rawValue: sender.selectedSegmentIndex) ?? .commodities
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.tableView.reloadData()
+        }
+
     }
 
     private func addContsraints() {
