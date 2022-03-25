@@ -1,11 +1,265 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20083" systemVersion="21E230" minimumToolsVersion="Xcode 4.5" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="History" representedClassName="Humana.History" syncable="YES">
-        <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20083" systemVersion="21E230" minimumToolsVersion="Xcode 9.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CommodityAttributesCD" representedClassName="CommodityAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="allowedDocumented" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="allowedUnverified" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="allowedVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="androidSupportedVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetGroupName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="avgPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buyActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="change1M" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1MAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1W" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1WAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1Y" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1YAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change24H" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change24HAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="circulatingSupply" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultSellAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="depositActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="extraInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iosSupportedVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="logoDark" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="maintenanceEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maintenanceReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measurementUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minBuyEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minSellEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minWithdrawEur" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updatePeriod" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="precisionForCoins" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precisionForFiatPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precisionForTx" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sellActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="supportDestinationTag" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transferActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unavailableReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlCheckAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlCheckTransaction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletMinDeposit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletSmallDeposit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletSmallDepositFee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletWithdrawFee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="withdrawActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="ieoPhases" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IeoPhaseCD" inverseName="toCommodityAttributes" inverseEntity="IeoPhaseCD" syncable="YES"/>
+        <relationship name="toCommodity" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CommodityCD" inverseName="attributes" inverseEntity="CommodityCD" syncable="YES"/>
+    </entity>
+    <entity name="CommodityCD" representedClassName="CommodityCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CommodityAttributesCD" inverseName="toCommodity" inverseEntity="CommodityAttributesCD" syncable="YES"/>
+        <relationship name="toWrapper" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WrapperCD" inverseName="toCommodity" inverseEntity="WrapperCD" syncable="YES"/>
+    </entity>
+    <entity name="CryptocoinAttributesCD" representedClassName="CryptocoinAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="allowedDocumented" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="allowedUnverified" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="allowedVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="androidSupportedVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetGroupName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="avgPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buyActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="change1M" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1MAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1W" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1WAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1Y" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change1YAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change24H" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="change24HAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="circulatingSupply" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultSellAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="depositActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="extraInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="infoIntegrationFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="investmentInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iosSupportedVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="logoDark" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="maintenanceEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maintenanceReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maintenanceReasonFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measurementUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minBuyEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minSellEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minWithdrawEur" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precisionForCoins" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precisionForFiatPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="precisionForTx" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sellActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="supportDestinationTag" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transferActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unavailableReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unavailableReasonFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlCheckAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlCheckTransaction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletInfoFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletMinDeposit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletSmallDeposit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletSmallDepositFee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletWithdrawFee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="withdrawActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="ieoPhases" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IeoPhaseCD" inverseName="toCryptocoinAttribute" inverseEntity="IeoPhaseCD" syncable="YES"/>
+        <relationship name="toCryptocoin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CryptocoinCD" inverseName="attributes" inverseEntity="CryptocoinCD" syncable="YES"/>
+    </entity>
+    <entity name="CryptocoinCD" representedClassName="CryptocoinCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CryptocoinAttributesCD" inverseName="toCryptocoin" inverseEntity="CryptocoinAttributesCD" syncable="YES"/>
+        <relationship name="toWrapper" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WrapperCD" inverseName="toCryptocoin" inverseEntity="WrapperCD" syncable="YES"/>
+    </entity>
+    <entity name="FiatAttributesCD" representedClassName="FiatAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="defaultSellAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasWallets" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="logoColor" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="logoDark" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="logoWhite" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="minWithdrawEuro" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameDeu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameEng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameFra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numericCharacterReference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precision" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="symbolCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toEurRate" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toFiat" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FiatCD" inverseName="attributes" inverseEntity="FiatCD" syncable="YES"/>
+    </entity>
+    <entity name="FiatCD" representedClassName="FiatCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FiatAttributesCD" inverseName="toFiat" inverseEntity="FiatAttributesCD" syncable="YES"/>
+    </entity>
+    <entity name="FiatWalletAttributesCD" representedClassName="FiatWalletAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="balance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fiatId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fiatSymbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pendingTransactionsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="toFiatWallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FiatWalletCD" inverseName="attributes" inverseEntity="FiatWalletCD" syncable="YES"/>
+    </entity>
+    <entity name="FiatWalletCD" representedClassName="FiatWalletCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FiatWalletAttributesCD" inverseName="toFiatWallet" inverseEntity="FiatWalletAttributesCD" syncable="YES"/>
+    </entity>
+    <entity name="IeoPhaseAttributesCD" representedClassName="IeoPhaseAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="maxStock" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phaseNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="endDate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseDateCD" inverseName="toIeoPhaseAttributesEnd" inverseEntity="IeoPhaseDateCD" syncable="YES"/>
+        <relationship name="startDate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseDateCD" inverseName="toIeoPhaseAttributesStart" inverseEntity="IeoPhaseDateCD" syncable="YES"/>
+        <relationship name="toIeoPhase" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseCD" inverseName="attributes" inverseEntity="IeoPhaseCD" syncable="YES"/>
+    </entity>
+    <entity name="IeoPhaseCD" representedClassName="IeoPhaseCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseAttributesCD" inverseName="toIeoPhase" inverseEntity="IeoPhaseAttributesCD" syncable="YES"/>
+        <relationship name="toCommodityAttributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CommodityAttributesCD" inverseName="ieoPhases" inverseEntity="CommodityAttributesCD" syncable="YES"/>
+        <relationship name="toCryptocoinAttribute" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CryptocoinAttributesCD" inverseName="ieoPhases" inverseEntity="CryptocoinAttributesCD" syncable="YES"/>
+    </entity>
+    <entity name="IeoPhaseDateCD" representedClassName="IeoPhaseDateCD" syncable="YES" codeGenerationType="class">
+        <attribute name="dateIso8601" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unix" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toIeoPhaseAttributesEnd" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseAttributesCD" inverseName="endDate" inverseEntity="IeoPhaseAttributesCD" syncable="YES"/>
+        <relationship name="toIeoPhaseAttributesStart" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IeoPhaseAttributesCD" inverseName="startDate" inverseEntity="IeoPhaseAttributesCD" syncable="YES"/>
+    </entity>
+    <entity name="WalletAttributesCD" representedClassName="WalletAttributesCD" syncable="YES" codeGenerationType="class">
+        <attribute name="balance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cryptocoinId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cryptocoinSymbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pendingTransactionsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="walletDeleted" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="toWallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WalletCD" inverseName="attributes" inverseEntity="WalletCD" syncable="YES"/>
+    </entity>
+    <entity name="WalletCD" representedClassName="WalletCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WalletAttributesCD" inverseName="toWallet" inverseEntity="WalletAttributesCD" syncable="YES"/>
+    </entity>
+    <entity name="WrapperCD" representedClassName="WrapperCD" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toCommodity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommodityCD" inverseName="toWrapper" inverseEntity="CommodityCD" syncable="YES"/>
+        <relationship name="toCryptocoin" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CryptocoinCD" inverseName="toWrapper" inverseEntity="CryptocoinCD" syncable="YES"/>
     </entity>
     <elements>
-        <element name="History" positionX="270" positionY="171" width="128" height="90"/>
+        <element name="CommodityCD" positionX="-427.5859375" positionY="-40.765625" width="128" height="103"/>
+        <element name="CommodityAttributesCD" positionX="-272.79296875" positionY="-1226.96484375" width="128" height="1168"/>
+        <element name="FiatCD" positionX="-10.58203125" positionY="182.05859375" width="128" height="88"/>
+        <element name="FiatAttributesCD" positionX="207.3984375" positionY="-45.34765625" width="128" height="298"/>
+        <element name="FiatWalletCD" positionX="-488.328125" positionY="455.046875" width="128" height="88"/>
+        <element name="FiatWalletAttributesCD" positionX="-273.3203125" positionY="393.1484375" width="128" height="133"/>
+        <element name="IeoPhaseCD" positionX="-59.28515625" positionY="-259.48828125" width="128" height="118"/>
+        <element name="IeoPhaseAttributesCD" positionX="141.8359375" positionY="-371.89453125" width="128" height="163"/>
+        <element name="IeoPhaseDateCD" positionX="387.87890625" positionY="-336.3046875" width="128" height="103"/>
+        <element name="WalletCD" positionX="-369.078125" positionY="268.046875" width="128" height="88"/>
+        <element name="WalletAttributesCD" positionX="-192.92578125" positionY="23.3515625" width="128" height="163"/>
+        <element name="WrapperCD" positionX="-955.0078125" positionY="181.47265625" width="128" height="88"/>
+        <element name="CryptocoinCD" positionX="-288" positionY="99" width="128" height="89"/>
+        <element name="CryptocoinAttributesCD" positionX="-279" positionY="108" width="128" height="1154"/>
     </elements>
 </model>

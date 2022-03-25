@@ -36,6 +36,51 @@ public class DataAPI {
         wallets = decoded?.wrapper.attributes.wallets ?? []
         commodityWallets = decoded?.wrapper.attributes.commodityWallets ?? []
         fiatWallets = decoded?.wrapper.attributes.fiatWallets ?? []
+        
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
+        
+        for coin in cryptocoins {
+            do {
+                try coin.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
+        for commodity in commodities {
+            do {
+                try commodity.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
+        for fiat in fiats {
+            do {
+                try fiat.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
+        for wallet in wallets {
+            do {
+                try wallet.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
+        for wallet in commodityWallets {
+            do {
+                try wallet.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
+        for wallet in fiatWallets {
+            do {
+                try wallet.save(context: context)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     // "cryptocoin_id": "8", for wallet and commodityWallet

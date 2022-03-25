@@ -15,7 +15,7 @@ extension String {
 
         // Rounds to the nearest whole number
         let handler = NSDecimalNumberHandler(roundingMode: .bankers,
-                                             scale: 0,
+                                             scale: Int16(fractionalCount),
                                              raiseOnExactness: false,
                                              raiseOnOverflow: false,
                                              raiseOnUnderflow: false,
