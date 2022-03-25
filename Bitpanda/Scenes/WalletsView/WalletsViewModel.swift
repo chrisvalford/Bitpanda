@@ -17,8 +17,7 @@ class WalletsViewModel {
     private var dataApi: DataAPI
     
     init() {
-        dataApi = DataAPI()
-        dataApi.fetchLocal()
+        dataApi = DataAPI.shared
         let wallets = dataApi.wallets
             .filter { $0.type == "wallet" && $0.attributes.deleted == false }
             .sorted { $0.attributes.name < $1.attributes.name }

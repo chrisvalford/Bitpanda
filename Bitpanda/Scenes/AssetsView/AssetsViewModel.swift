@@ -22,8 +22,7 @@ class AssetsViewModel {
     private var dataApi: DataAPI
     
     init() {
-        dataApi = DataAPI()
-        dataApi.fetchLocal()
+        dataApi = DataAPI.shared
     }
     
     func select(assetsSelection: AssetsSelection) {
@@ -32,12 +31,9 @@ class AssetsViewModel {
         cryptocoinData.removeAll()
         switch assetsSelection {
         case .cryptocoins:
-            print("Selected cryptocoins \(dataApi.cryptocoins.count)")
-            cryptocoinData = dataApi.cryptocoins
-                .filter { $0.type == "cryptocoin" }
-                .sorted { $0.attributes.sort < $1.attributes.sort }
+            cryptocoinData = dataApi.allCryptocoins()
                 .map( {
-                    CryptocoinView($0.attributes)
+                    CryptocoinView($0.attributes!)
                 } )
         case .commodities:
             print("Selected commodities \(dataApi.commodities.count)")

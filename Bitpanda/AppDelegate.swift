@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Documents Directory: \(documentsPath)")
     }
 #endif
+        
+        // TODO: Remove this once API is completed and no longer a singleton
+        let dataApi = DataAPI.shared
+        dataApi.fetchLocal()
+
         return true
     }
 

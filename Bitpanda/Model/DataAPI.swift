@@ -6,6 +6,7 @@
 //  Copyright © 2022 anapp4that. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 /// Simple Data API using the supplied JSON
@@ -13,8 +14,10 @@ import UIKit
 /// and uses it when the network is not available
 public class DataAPI {
     
+    public static let shared = DataAPI()
+    
     // From struct CollectionDataAttributes
-    public var cryptocoins: [Cryptocoin] = []
+    private var cryptocoins: [Cryptocoin] = []
     public var commodities: [Commodity] = []
     public var fiats: [Fiat] = []
     public var wallets: [Wallet] = []
@@ -38,49 +41,47 @@ public class DataAPI {
         fiatWallets = decoded?.wrapper.attributes.fiatWallets ?? []
         
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
-        
-        for coin in cryptocoins {
-            do {
+        do {
+            for coin in cryptocoins {
                 try coin.save(context: context)
-            } catch {
-                print(error)
             }
-        }
-        for commodity in commodities {
-            do {
+            for commodity in commodities {
                 try commodity.save(context: context)
-            } catch {
-                print(error)
             }
-        }
-        for fiat in fiats {
-            do {
+            for fiat in fiats {
                 try fiat.save(context: context)
-            } catch {
-                print(error)
             }
-        }
-        for wallet in wallets {
-            do {
+            for wallet in wallets {
                 try wallet.save(context: context)
-            } catch {
-                print(error)
             }
-        }
-        for wallet in commodityWallets {
-            do {
+            for wallet in commodityWallets {
                 try wallet.save(context: context)
-            } catch {
-                print(error)
             }
-        }
-        for wallet in fiatWallets {
-            do {
+            for wallet in fiatWallets {
                 try wallet.save(context: context)
-            } catch {
-                print(error)
             }
+        } catch {
+            print(error)
         }
+    }
+    
+    func allCryptocoins() -> [CryptocoinCD] {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<CryptocoinCD>
+        fetchRequest = CryptocoinCD.fetchRequest()
+
+//        fetchRequest.predicate = NSPredicate(
+//            format: "name LIKE %@", "Robert"
+//        )
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
+        var objects: [CryptocoinCD]
+        do {
+            objects = try context.fetch(fetchRequest)
+            return objects
+        } catch {
+            print(error)
+        }
+        return []
     }
     
     // "cryptocoin_id": "8", for wallet and commodityWallet
