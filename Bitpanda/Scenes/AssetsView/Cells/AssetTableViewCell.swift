@@ -24,20 +24,11 @@ class AssetTableViewCell: UITableViewCell {
     let iconWidth = 32.0
     let iconHeight = 32.0
     
-    private lazy var iconView: UIView = {
-        let view = UIView(frame: .zero)
-        guard let path = self.traitCollection.userInterfaceStyle == .dark ? viewModel?.iconDark : viewModel?.iconLight else {
-            print("Invalid url")
-            return UIView()
-        }
-        guard let svg = SVGImage(frame: CGRect(x: iconTop, y: iconLeft, width: iconWidth, height: iconHeight), url: path) else {
-            print("Invalid SVG")
-            return UIView()
-        }
-        svg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(svg)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var iconView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv
     }()
     
     lazy var nameView: UILabel = {

@@ -73,11 +73,9 @@
 		2F0CBDBA27EE05960038714E /* FiatWalletAttributes+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0CBD9C27EDE7060038714E /* FiatWalletAttributes+CD.swift */; };
 		2F1E234B27E9E6C500399315 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1E234A27E9E6C500399315 /* MapKit.framework */; };
 		2F420BB427EB511700A1023F /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 2F420BB327EB511700A1023F /* PocketSVG */; };
-		2F420BB527EB52BB00A1023F /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BD527EB40C700E107E7 /* SVGImage.swift */; };
 		2F420BB727EB703D00A1023F /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */; };
 		2F6A7BCD27EB346800E107E7 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */; };
 		2F6A7BCE27EB34DE00E107E7 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */; };
-		2F6A7BD627EB40C700E107E7 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BD527EB40C700E107E7 /* SVGImage.swift */; };
 		2F7E2FEC27E9F47A0093B73E /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E2FEB27E9F47A0093B73E /* data.json */; };
 		2F7E2FED27E9F47A0093B73E /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E2FEB27E9F47A0093B73E /* data.json */; };
 		2F7E2FF027E9F5360093B73E /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E2FEF27E9F5360093B73E /* Wallet.swift */; };
@@ -94,6 +92,8 @@
 		2F7E300027EA026B0093B73E /* FiatWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E2FFE27EA026A0093B73E /* FiatWallet.swift */; };
 		2F7E301B27EB16C90093B73E /* DataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E301A27EB16C90093B73E /* DataAPI.swift */; };
 		2F7E301C27EB16C90093B73E /* DataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E301A27EB16C90093B73E /* DataAPI.swift */; };
+		2F83012627F063D900858EB7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F83012527F063D900858EB7 /* ImageCache.swift */; };
+		2F83012727F064C800858EB7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F83012527F063D900858EB7 /* ImageCache.swift */; };
 		2FA895EA27EBD35F00501EB5 /* CommodityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA895E927EBD35F00501EB5 /* CommodityView.swift */; };
 		2FA895EB27EBD3A300501EB5 /* CommodityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA895E927EBD35F00501EB5 /* CommodityView.swift */; };
 		2FA895ED27EBD81800501EB5 /* FiatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA895EC27EBD81800501EB5 /* FiatView.swift */; };
@@ -172,7 +172,6 @@
 		2F1E234A27E9E6C500399315 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
-		2F6A7BD527EB40C700E107E7 /* SVGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImage.swift; sourceTree = "<group>"; };
 		2F7E2FEB27E9F47A0093B73E /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		2F7E2FEF27E9F5360093B73E /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		2F7E2FF227E9F6A00093B73E /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
@@ -181,6 +180,7 @@
 		2F7E2FFB27E9FFFC0093B73E /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fiat.swift; sourceTree = "<group>"; };
 		2F7E2FFE27EA026A0093B73E /* FiatWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiatWallet.swift; sourceTree = "<group>"; };
 		2F7E301A27EB16C90093B73E /* DataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAPI.swift; sourceTree = "<group>"; };
+		2F83012527F063D900858EB7 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2FA895E927EBD35F00501EB5 /* CommodityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityView.swift; sourceTree = "<group>"; };
 		2FA895EC27EBD81800501EB5 /* FiatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatView.swift; sourceTree = "<group>"; };
 		2FA895EF27EBD86700501EB5 /* AssetsSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsSelection.swift; sourceTree = "<group>"; };
@@ -356,7 +356,6 @@
 		2FC26E1727E9E3BC00BB31AA /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				2F6A7BD527EB40C700E107E7 /* SVGImage.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -369,6 +368,7 @@
 				2F7E2FEE27E9F5190093B73E /* Codable */,
 				2F7E301A27EB16C90093B73E /* DataAPI.swift */,
 				2FA895EF27EBD86700501EB5 /* AssetsSelection.swift */,
+				2F83012527F063D900858EB7 /* ImageCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -542,6 +542,7 @@
 			files = (
 				2F0CBDA127EDE7250038714E /* WalletAttributes+CD.swift in Sources */,
 				2F0CBD6327ECBFA00038714E /* WalletTableViewCell.swift in Sources */,
+				2F83012627F063D900858EB7 /* ImageCache.swift in Sources */,
 				2F0CBD9927EDE6D10038714E /* FiatWalletAttributes.swift in Sources */,
 				2F6A7BCD27EB346800E107E7 /* AssetsViewModel.swift in Sources */,
 				2F0CBD8727EDE1C00038714E /* IeoPhaseAttributes.swift in Sources */,
@@ -569,7 +570,6 @@
 				2F0CBD4D27EC79400038714E /* FiatTableViewCell.swift in Sources */,
 				2F7E2FF927E9FBDD0093B73E /* IeoPhase.swift in Sources */,
 				2FAED57627E9EA680067CAE8 /* CoreDataStack.swift in Sources */,
-				2F6A7BD627EB40C700E107E7 /* SVGImage.swift in Sources */,
 				2F0CBD6027ECA93D0038714E /* WalletView.swift in Sources */,
 				2FAED57B27E9F07B0067CAE8 /* AssetsViewController.swift in Sources */,
 				2F0CBD7F27EDD7D60038714E /* Cryptocoin+CD.swift in Sources */,
@@ -606,10 +606,10 @@
 				2F0CBD8327EDDDB10038714E /* CryptocoinAttributes.swift in Sources */,
 				2F0CBD6A27ECC2430038714E /* AssetTableViewCell.swift in Sources */,
 				2F0CBD6927ECC2400038714E /* CryptocoinTableViewCell.swift in Sources */,
+				2F83012727F064C800858EB7 /* ImageCache.swift in Sources */,
 				2FA895F127EBD87E00501EB5 /* AssetsSelection.swift in Sources */,
 				2F6A7BCE27EB34DE00E107E7 /* AssetsViewModel.swift in Sources */,
 				2F0CBD7327ECED870038714E /* Bitpanda.xcdatamodel in Sources */,
-				2F420BB527EB52BB00A1023F /* SVGImage.swift in Sources */,
 				2F0CBDB127EE05960038714E /* CommodityAttributes+CD.swift in Sources */,
 				2F0CBDAC27EE01DA0038714E /* CommodityAttributes.swift in Sources */,
 				2F0CBD5E27ECA88D0038714E /* WalletsViewModel.swift in Sources */,

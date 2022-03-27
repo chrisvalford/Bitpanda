@@ -16,6 +16,11 @@ class AssetsViewController: UIViewController {
     
     private let viewModel = AssetsViewModel()
     
+    let iconTop = 4.0
+    let iconLeft = 0.0
+    let iconWidth = 32.0
+    let iconHeight = 32.0
+    
     lazy var assetSelector: UISegmentedControl = {
         let segmented = UISegmentedControl(items: AssetsSelection.allValues())
         segmented.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +76,6 @@ class AssetsViewController: UIViewController {
 
     @objc
     func reloadData(notification : NSNotification) {
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
         self.tableView.reloadData()
     }
 
@@ -89,6 +93,10 @@ class AssetsViewController: UIViewController {
 }
 
 extension AssetsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewModel.selectedAsset {
         case .cryptocoins:
@@ -109,8 +117,12 @@ extension AssetsViewController: UITableViewDataSource {
             return cell
         case .cryptocoins:
             let cell = tableView.dequeueReusableCell(withIdentifier: cryptocoinCellId, for: indexPath) as! CryptocoinTableViewCell
-            cell.viewModel = CryptocoinView(viewModel.cryptocoinData[indexPath.row].attributes!)
-            cell.layout()
+            let viewModel = CryptocoinView(viewModel.cryptocoinData[indexPath.row].attributes!)
+            cell.viewModel = viewModel
+            cell.nameView.text = viewModel.name
+            cell.symbolView.text = viewModel.symbol
+            cell.averagePriceView.text = viewModel.averagePrice
+            cell.imageView?.image = ImageCache.image(path: (self.traitCollection.userInterfaceStyle == .dark ? viewModel.iconDark : viewModel.iconLight)!, size: CGSize(width: 32, height: 32))
             return cell
         case .fiats:
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatCellId, for: indexPath) as! FiatTableViewCell

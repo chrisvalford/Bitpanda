@@ -24,27 +24,18 @@ class CryptocoinTableViewCell: UITableViewCell {
     let iconWidth = 32.0
     let iconHeight = 32.0
     
-    private lazy var iconView: UIView = {
-        let view = UIView(frame: .zero)
-        guard let path = self.traitCollection.userInterfaceStyle == .dark ? viewModel?.iconDark : viewModel?.iconLight else {
-            print("Invalid url")
-            return UIView()
-        }
-        guard let svg = SVGImage(frame: CGRect(x: iconTop, y: iconLeft, width: iconWidth, height: iconHeight), url: path) else {
-            print("Invalid SVG")
-            return UIView()
-        }
-        svg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(svg)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var iconView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv
     }()
     
     lazy var nameView: UILabel = {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = viewModel?.name
+        //label.text = viewModel?.name
         label.sizeToFit()
         return label
     }()
@@ -53,7 +44,7 @@ class CryptocoinTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = viewModel?.symbol
+        //label.text = viewModel?.symbol
         label.sizeToFit()
         return label
     }()
@@ -63,12 +54,15 @@ class CryptocoinTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .right
-        label.text = "Average price: \(viewModel?.averagePrice ?? "")"
+        //label.text = "Average price: \(viewModel?.averagePrice ?? "")"
         label.sizeToFit()
         return label
     }()
     
-    func layout() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        //super.awakeFromNib()
+        // Initialization code
         self.addSubview(iconView)
         self.addSubview(nameView)
         self.addSubview(symbolView)
@@ -78,20 +72,23 @@ class CryptocoinTableViewCell: UITableViewCell {
             iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: iconLeft),
             
             nameView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
+            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 60),
             
             symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
+            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 60),
             symbolView.widthAnchor.constraint(equalToConstant: 54),
 
             averagePriceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             averagePriceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 8)
         ])
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        viewModel = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
