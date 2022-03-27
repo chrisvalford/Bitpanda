@@ -67,16 +67,17 @@ public class DataAPI {
         } catch {
             print(error)
         }
+        cryptocoins.removeAll()
+        commodities.removeAll()
+        wallets.removeAll()
+        commodityWallets.removeAll()
+        fiatWallets.removeAll()
     }
     
     func allCryptocoins() -> [CryptocoinCD] {
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<CryptocoinCD>
         fetchRequest = CryptocoinCD.fetchRequest()
-
-//        fetchRequest.predicate = NSPredicate(
-//            format: "name LIKE %@", "Robert"
-//        )
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
         var objects: [CryptocoinCD]
         do {
@@ -92,10 +93,6 @@ public class DataAPI {
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<CommodityCD>
         fetchRequest = CommodityCD.fetchRequest()
-
-//        fetchRequest.predicate = NSPredicate(
-//            format: "name LIKE %@", "Robert"
-//        )
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
         var objects: [CommodityCD]
         do {
@@ -117,26 +114,6 @@ public class DataAPI {
 //        )
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.symbol", ascending: true)]
         var objects: [FiatCD]
-        do {
-            objects = try context.fetch(fetchRequest)
-            return objects
-        } catch {
-            print(error)
-        }
-        return []
-    }
-    
-    func allWallets() -> [WalletCD] {
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<WalletCD>
-        fetchRequest = WalletCD.fetchRequest()
-        // TODO: Add predicate
-//        fetchRequest.predicate = NSPredicate(
-//            format: "attributes.hasWallets == TRUE"
-//        )
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
-        fetchRequest.propertiesToGroupBy = ["type"]
-        var objects: [WalletCD]
         do {
             objects = try context.fetch(fetchRequest)
             return objects

@@ -16,7 +16,7 @@ class WalletsViewModel {
     lazy var fetchedResultsController: NSFetchedResultsController<WalletCD> = {
         let fetchRequest: NSFetchRequest<WalletCD>
         fetchRequest = WalletCD.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "attributes.walletDeleted != false")
+        fetchRequest.predicate = NSPredicate(format: "attributes.walletDeleted == false")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "walletGroup", ascending: true),
                                         NSSortDescriptor(key: "attributes.sort", ascending: true),
                                         NSSortDescriptor(key: "attributes.symbol", ascending: true)]
