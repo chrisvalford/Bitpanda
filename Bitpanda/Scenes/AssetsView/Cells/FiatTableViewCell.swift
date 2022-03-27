@@ -14,27 +14,33 @@ import UIKit
 
 class FiatTableViewCell: UITableViewCell {
     
-    var viewModel: FiatView?
+    var viewModel: FiatView? {
+        didSet {
+            nameView.text = viewModel?.name
+            symbolView.text = viewModel?.symbol
+            guard let iconLight = viewModel?.iconLight else {
+                iconView.image = UIImage()
+                return
+            }
+            guard let iconDark = viewModel?.iconDark else {
+                iconView.image = UIImage()
+                return
+            }
+            let icon = ImageCache.image(path: ((self.traitCollection.userInterfaceStyle == .dark ? iconDark : iconLight)), size: CGSize(width: 32, height: 32))
+            iconView.image = icon
+        }
+    }
     
     let iconTop = 4.0
     let iconLeft = 0.0
     let iconWidth = 32.0
     let iconHeight = 32.0
     
-    private lazy var iconView: UIView = {
-        let view = UIView(frame: .zero)
-        guard let path = self.traitCollection.userInterfaceStyle == .dark ? viewModel?.iconDark : viewModel?.iconLight else {
-            print("Invalid url")
-            return UIView()
-        }
-        guard let svg = SVGImage(frame: CGRect(x: iconTop, y: iconLeft, width: iconWidth, height: iconHeight), url: path) else {
-            print("Invalid SVG")
-            return UIView()
-        }
-        svg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(svg)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var iconView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv
     }()
     
     lazy var nameView: UILabel = {
@@ -64,10 +70,10 @@ class FiatTableViewCell: UITableViewCell {
             iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: iconLeft),
             
             nameView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
+            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
             
             symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 44),
+            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
             symbolView.widthAnchor.constraint(equalToConstant: 54)
         ])
     }

@@ -9,6 +9,11 @@
 import Foundation
 import CoreData
 
+enum CoreDataError: Error {
+    case createEntityFailed(String)
+    case saveFailed(String)
+}
+
 internal final class CoreDataStack {
     
     static let shared = CoreDataStack()
@@ -22,7 +27,9 @@ internal final class CoreDataStack {
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let modelURL = Bundle(for: type(of: self)).url(forResource: "Bitpanda", withExtension: "momd")!
+        guard let modelURL = Bundle(for: type(of: self)).url(forResource: "Bitpanda", withExtension: "mom") else {
+            fatalError("Cannot find modelURL")
+        }
         let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
         let container = NSPersistentContainer(name: "Bitpanda", managedObjectModel: managedObjectModel!)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

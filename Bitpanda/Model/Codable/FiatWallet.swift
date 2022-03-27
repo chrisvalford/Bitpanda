@@ -13,11 +13,3 @@ public struct FiatWallet: Codable, Identifiable {
     public let type: String
     public let attributes: FiatWalletAttributes
 }
-
-public struct FiatWalletAttributes: Codable {
-    public let fiatId: String
-    public let fiatSymbol: String
-    public let balance: String
-    public let name: String
-    public let pendingTransactionsCount: Int
-}
