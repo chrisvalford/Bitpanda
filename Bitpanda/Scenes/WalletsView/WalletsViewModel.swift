@@ -13,17 +13,17 @@ class WalletsViewModel {
     
     // For a sectioned table view we need an array of arrays.
     var walletData: [WalletCD] = []
-    let headerData = ["Wallets","Commodity Wallets","Fiat Wallets"]
     lazy var fetchedResultsController: NSFetchedResultsController<WalletCD> = {
         let fetchRequest: NSFetchRequest<WalletCD>
         fetchRequest = WalletCD.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "attributes.walletDeleted != false")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true),
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "walletGroup", ascending: true),
+                                        NSSortDescriptor(key: "attributes.sort", ascending: true),
                                         NSSortDescriptor(key: "attributes.symbol", ascending: true)]
         let frc = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: CoreDataStack.shared.persistentContainer.viewContext,
-            sectionNameKeyPath: "type",
+            sectionNameKeyPath: "walletGroup",
             cacheName: nil)
         return frc
     }()

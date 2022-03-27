@@ -21,7 +21,8 @@ extension FiatWalletAttributes {
         attributes.isDefault = true
         attributes.name = self.name
         attributes.pendingTransactionsCount = NSNumber(integerLiteral: self.pendingTransactionsCount)
-        attributes.walletDeleted = false
+        attributes.walletDeleted = true
+        attributes.sort = 999
         do {
             try context.save()
         } catch {

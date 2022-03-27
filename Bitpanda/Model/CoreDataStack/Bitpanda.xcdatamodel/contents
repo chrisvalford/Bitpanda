@@ -231,7 +231,7 @@
     </entity>
     <entity name="WalletCD" representedClassName="WalletCD" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walletGroup" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WalletAttributesCD" inverseName="toWallet" inverseEntity="WalletAttributesCD" syncable="YES"/>
     </entity>
     <entity name="WrapperCD" representedClassName="WrapperCD" syncable="YES" codeGenerationType="class">
@@ -240,6 +240,7 @@
         <relationship name="toCryptocoin" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CryptocoinCD" inverseName="toWrapper" inverseEntity="CryptocoinCD" syncable="YES"/>
     </entity>
     <elements>
+        <element name="CacheItem" positionX="-747" positionY="-1071" width="128" height="74"/>
         <element name="CommodityAttributesCD" positionX="-272.79296875" positionY="-1226.96484375" width="128" height="1168"/>
         <element name="CommodityCD" positionX="-427.5859375" positionY="-40.765625" width="128" height="103"/>
         <element name="CryptocoinAttributesCD" positionX="-279" positionY="108" width="128" height="1154"/>
@@ -250,8 +251,7 @@
         <element name="IeoPhaseCD" positionX="-59.28515625" positionY="-259.48828125" width="128" height="118"/>
         <element name="IeoPhaseDateCD" positionX="387.87890625" positionY="-336.3046875" width="128" height="103"/>
         <element name="WalletAttributesCD" positionX="-192.92578125" positionY="23.3515625" width="128" height="164"/>
-        <element name="WalletCD" positionX="-369.078125" positionY="268.046875" width="128" height="88"/>
+        <element name="WalletCD" positionX="-369.078125" positionY="268.046875" width="128" height="74"/>
         <element name="WrapperCD" positionX="-955.0078125" positionY="181.47265625" width="128" height="88"/>
-        <element name="CacheItem" positionX="-747" positionY="-1071" width="128" height="74"/>
     </elements>
 </model>

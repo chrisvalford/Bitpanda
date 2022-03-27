@@ -16,7 +16,7 @@ extension Wallet {
         }
         let wallet = WalletCD(entity: entity, insertInto: context)
         wallet.id = self.id
-        wallet.type = type
+        wallet.walletGroup = type
         wallet.attributes = try self.attributes.save(context: context)
         
         do {

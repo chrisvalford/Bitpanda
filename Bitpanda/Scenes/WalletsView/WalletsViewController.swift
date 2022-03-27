@@ -68,8 +68,11 @@ extension WalletsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 2:
+        guard let sectionInfo = viewModel.fetchedResultsController.sections?[indexPath.section] else {
+            return UITableViewCell()
+        }
+        switch sectionInfo.name {
+        case "Fiat Wallet":
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatWalletCellId, for: indexPath) as! FiatWalletTableViewCell
             cell.viewModel = WalletView(viewModel.fetchedResultsController.object(at: indexPath).attributes!)
             cell.layer.borderWidth = 1.0
