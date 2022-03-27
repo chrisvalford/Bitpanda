@@ -10,8 +10,6 @@ import CoreData
 import Foundation
 
 class WalletsViewModel {
-    
-    // For a sectioned table view we need an array of arrays.
     var walletData: [WalletCD] = []
     lazy var fetchedResultsController: NSFetchedResultsController<WalletCD> = {
         let fetchRequest: NSFetchRequest<WalletCD>

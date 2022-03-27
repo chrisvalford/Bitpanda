@@ -15,7 +15,7 @@ extension Wallet {
             throw CoreDataError.createEntityFailed("WalletCD")
         }
         let wallet = WalletCD(entity: entity, insertInto: context)
-        wallet.id = self.id
+        wallet.id = type == "Wallet" ? "wa:\(self.id)" : "cw:\(self.id)"
         wallet.walletGroup = type
         wallet.attributes = try self.attributes.save(context: context)
         

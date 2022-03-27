@@ -15,7 +15,7 @@ extension FiatWallet {
             throw CoreDataError.createEntityFailed("WalletCD")
         }
         let wallet = WalletCD(entity: entity, insertInto: context)
-        wallet.id = self.id
+        wallet.id = "fw:\(self.id)"
         wallet.walletGroup = type
         wallet.attributes = try self.attributes.save(context: context)
         

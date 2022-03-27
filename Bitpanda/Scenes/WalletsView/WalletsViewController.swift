@@ -13,6 +13,7 @@ class WalletsViewController: UIViewController {
     
     let walletCellId = "WalletCell"
     let fiatWalletCellId = "FiatWalletCell"
+    let commodityWalletCellId = "CommodityWalletCell"
     
     private let viewModel = WalletsViewModel()
     
@@ -22,6 +23,7 @@ class WalletsViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(WalletTableViewCell.self, forCellReuseIdentifier: walletCellId)
         tv.register(FiatWalletTableViewCell.self, forCellReuseIdentifier: fiatWalletCellId)
+        tv.register(CommodityWalletTableViewCell.self, forCellReuseIdentifier: commodityWalletCellId)
         return tv
     }()
 
@@ -79,11 +81,18 @@ extension WalletsViewController: UITableViewDataSource {
             cell.layer.borderColor = self.traitCollection.userInterfaceStyle == .dark ? UIColor.gray.cgColor : UIColor.lightGray.cgColor
             cell.layout()
             return cell
-        default:
+        case "Wallet":
             let cell = tableView.dequeueReusableCell(withIdentifier: walletCellId, for: indexPath) as! WalletTableViewCell
             cell.viewModel = WalletView(viewModel.fetchedResultsController.object(at: indexPath).attributes!)
             cell.layout()
             return cell
+        case "Commodity Wallet":
+            let cell = tableView.dequeueReusableCell(withIdentifier: commodityWalletCellId, for: indexPath) as! CommodityWalletTableViewCell
+            cell.viewModel = WalletView(viewModel.fetchedResultsController.object(at: indexPath).attributes!)
+            cell.layout()
+            return cell
+        default:
+            return UITableViewCell()
         }
     }
     

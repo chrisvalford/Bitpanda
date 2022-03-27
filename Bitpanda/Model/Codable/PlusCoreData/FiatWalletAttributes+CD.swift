@@ -15,7 +15,7 @@ extension FiatWalletAttributes {
             throw CoreDataError.createEntityFailed("WalletAttributesCD")
         }
         let attributes = WalletAttributesCD(entity: entity, insertInto: context)
-        attributes.id = self.fiatId
+        attributes.id = "fwa:\(self.fiatId)"
         attributes.symbol = self.fiatSymbol
         attributes.balance = self.balance
         attributes.isDefault = true

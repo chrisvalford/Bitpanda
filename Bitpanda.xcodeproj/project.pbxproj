@@ -112,6 +112,8 @@
 		2FD4372827F0C58B002CE06F /* FiatWalletAttributes+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372727F0C58B002CE06F /* FiatWalletAttributes+CD.swift */; };
 		2FD4372927F0C649002CE06F /* FiatWallet+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372527F0C53D002CE06F /* FiatWallet+CD.swift */; };
 		2FD4372A27F0C651002CE06F /* FiatWalletAttributes+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372727F0C58B002CE06F /* FiatWalletAttributes+CD.swift */; };
+		2FD4372C27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */; };
+		2FD4372D27F0DA69002CE06F /* CommodityWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +197,7 @@
 		2FC26E3027E9E3CD00BB31AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FD4372527F0C53D002CE06F /* FiatWallet+CD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FiatWallet+CD.swift"; sourceTree = "<group>"; };
 		2FD4372727F0C58B002CE06F /* FiatWalletAttributes+CD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FiatWalletAttributes+CD.swift"; sourceTree = "<group>"; };
+		2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityWalletTableViewCell.swift; sourceTree = "<group>"; };
 		2FFEBA011AEE0E74006708B4 /* Bitpanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitpanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFEBA181AEE0E74006708B4 /* BitpandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitpandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -242,8 +245,9 @@
 		2F0CBD6E27ECC64E0038714E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2F0CBD6227ECBFA00038714E /* WalletTableViewCell.swift */,
+				2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */,
 				2F0CBD6427ECBFB30038714E /* FiatWalletTableViewCell.swift */,
+				2F0CBD6227ECBFA00038714E /* WalletTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -568,6 +572,7 @@
 				2F0CBD5B27EC91350038714E /* TabBarViewController.swift in Sources */,
 				2F0CBD5327EC82FC0038714E /* CryptocoinTableViewCell.swift in Sources */,
 				2F0CBD4D27EC79400038714E /* FiatTableViewCell.swift in Sources */,
+				2FD4372C27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift in Sources */,
 				2F7E2FF927E9FBDD0093B73E /* IeoPhase.swift in Sources */,
 				2FAED57627E9EA680067CAE8 /* CoreDataStack.swift in Sources */,
 				2F0CBD6027ECA93D0038714E /* WalletView.swift in Sources */,
@@ -624,6 +629,7 @@
 				2FAED57527E9EA680067CAE8 /* CodingUserInfoKey+MOC.swift in Sources */,
 				2F0CBD6827ECC2340038714E /* FiatTableViewCell.swift in Sources */,
 				2F0CBD6127ECAEA70038714E /* WalletView.swift in Sources */,
+				2FD4372D27F0DA69002CE06F /* CommodityWalletTableViewCell.swift in Sources */,
 				2F0CBD6C27ECC24F0038714E /* TabBarViewController.swift in Sources */,
 				2F0CBDB927EE05960038714E /* IeoPhaseAttributes+CD.swift in Sources */,
 				2F0CBDAF27EE02220038714E /* IeoPhaseDate.swift in Sources */,
