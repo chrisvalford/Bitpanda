@@ -14,7 +14,22 @@ import UIKit
 
 class FiatTableViewCell: UITableViewCell {
     
-    var viewModel: FiatView?
+    var viewModel: FiatView? {
+        didSet {
+            nameView.text = viewModel?.name
+            symbolView.text = viewModel?.symbol
+            guard let iconLight = viewModel?.iconLight else {
+                iconView.image = UIImage()
+                return
+            }
+            guard let iconDark = viewModel?.iconDark else {
+                iconView.image = UIImage()
+                return
+            }
+            let icon = ImageCache.image(path: ((self.traitCollection.userInterfaceStyle == .dark ? iconDark : iconLight)), size: CGSize(width: 32, height: 32))
+            iconView.image = icon
+        }
+    }
     
     let iconTop = 4.0
     let iconLeft = 0.0

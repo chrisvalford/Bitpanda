@@ -9,15 +9,15 @@
 import Foundation
 
 struct FiatView {
-    let iconLight: URL
-    let iconDark: URL
+    let iconLight: URL?
+    let iconDark: URL?
     let name: String
     let symbol: String
     
-    init(_ attributes: FiatAttributes) {
+    init(_ attributes: FiatAttributesCD) {
         iconLight = attributes.logo
         iconDark = attributes.logoDark
-        name = attributes.name
-        symbol = attributes.symbol
+        name = attributes.name ?? ""
+        symbol = attributes.symbol ?? ""
     }
 }

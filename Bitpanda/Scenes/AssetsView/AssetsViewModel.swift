@@ -15,7 +15,7 @@ class AssetsViewModel {
             self.select(assetsSelection: selectedAsset)
         }
     }
-    var fiatData: [FiatView] = []
+    var fiatData: [FiatCD] = []
     var commodityData: [CommodityCD] = []
     var cryptocoinData: [CryptocoinCD] = []
     
@@ -35,12 +35,7 @@ class AssetsViewModel {
         case .commodities:
             commodityData = dataApi.allCommodies()
         case .fiats:
-            fiatData = dataApi.fiats
-                .filter({ $0.attributes.hasWallets })
-                .sorted { $0.attributes.symbol < $1.attributes.symbol }
-                .map( {
-                    FiatView($0.attributes)
-                } )
+            fiatData = dataApi.allFiats()
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AssetsUpdated"), object: nil, userInfo: nil)
     }

@@ -121,8 +121,10 @@ extension AssetsViewController: UITableViewDataSource {
             return cell
         case .fiats:
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatCellId, for: indexPath) as! FiatTableViewCell
-            cell.viewModel = viewModel.fiatData[indexPath.row]
-            cell.layout()
+            guard let attributes = viewModel.fiatData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = FiatView(attributes)
             return cell
         }
     }
