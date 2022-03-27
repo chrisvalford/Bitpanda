@@ -10,13 +10,13 @@ import CoreData
 import Foundation
 
 extension Wallet {
-    func save(context: NSManagedObjectContext) throws {
+    func save(type: String, context: NSManagedObjectContext) throws {
         guard let entity = NSEntityDescription.entity(forEntityName: "WalletCD", in: context) else {
             throw CoreDataError.createEntityFailed("WalletCD")
         }
         let wallet = WalletCD(entity: entity, insertInto: context)
         wallet.id = self.id
-        wallet.type = self.type
+        wallet.type = type
         wallet.attributes = try self.attributes.save(context: context)
         
         do {

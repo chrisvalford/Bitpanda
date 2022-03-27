@@ -6,38 +6,26 @@
 //  Copyright © 2022 Digital+Marine. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 class WalletsViewModel {
     
     // For a sectioned table view we need an array of arrays.
-    var walletData: [[WalletView]] = []
+    var walletData: [WalletCD] = []
     let headerData = ["Wallets","Commodity Wallets","Fiat Wallets"]
-    
-    private var dataApi: DataAPI
-    
-    init() {
-        dataApi = DataAPI.shared
-        let wallets = dataApi.wallets
-            .filter { $0.type == "wallet" && $0.attributes.deleted == false }
-            .sorted { $0.attributes.name < $1.attributes.name }
-            .map( {
-                WalletView(id: $0.id, attributes: $0.attributes, icon: dataApi.walletImage(forId: $0.attributes.cryptocoinId))
-            } )
-        walletData.append(contentsOf: [wallets])
-        let commodityWallets = dataApi.commodityWallets
-            .filter { $0.type == "wallet" && $0.attributes.deleted == false }
-            .sorted { $0.attributes.name < $1.attributes.name }
-            .map( {
-                WalletView(id: $0.id, attributes: $0.attributes, icon: dataApi.walletImage(forId: $0.attributes.cryptocoinId))
-            } )
-        walletData.append(contentsOf: [commodityWallets])
-        let fiatWallets = dataApi.fiatWallets
-            .filter { $0.type == "fiat_wallet" }
-            .sorted { $0.attributes.name < $1.attributes.name }
-            .map( {
-                WalletView(id: $0.id, attributes: $0.attributes, icon: dataApi.fiatWalletImage(forId: $0.attributes.fiatId))
-            } )
-        walletData.append(contentsOf: [fiatWallets])
-    }
+    lazy var fetchedResultsController: NSFetchedResultsController<WalletCD> = {
+        let fetchRequest: NSFetchRequest<WalletCD>
+        fetchRequest = WalletCD.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "attributes.walletDeleted != false")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true),
+                                        NSSortDescriptor(key: "attributes.symbol", ascending: true)]
+        let frc = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: CoreDataStack.shared.persistentContainer.viewContext,
+            sectionNameKeyPath: "type",
+            cacheName: nil)
+        return frc
+    }()
+
 }

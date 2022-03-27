@@ -16,4 +16,5 @@ public struct WalletAttributes: Codable {
     public let name: String
     public let pendingTransactionsCount: Int
     public let deleted: Bool
+    public var sort: Int? = 999
 }

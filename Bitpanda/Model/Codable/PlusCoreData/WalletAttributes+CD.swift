@@ -15,13 +15,16 @@ extension WalletAttributes {
             throw CoreDataError.createEntityFailed("WalletAttributesCD")
         }
         let attributes = WalletAttributesCD(entity: entity, insertInto: context)
-        attributes.cryptocoinId = self.cryptocoinId
-        attributes.cryptocoinSymbol = self.cryptocoinSymbol
+        attributes.id = self.cryptocoinId
+        attributes.symbol = self.cryptocoinSymbol
         attributes.balance = self.balance
         attributes.isDefault = NSNumber(booleanLiteral: self.isDefault)
         attributes.name = self.name
         attributes.pendingTransactionsCount = NSNumber(integerLiteral: self.pendingTransactionsCount)
         attributes.walletDeleted = NSNumber(booleanLiteral: self.deleted)
+        if let sort = self.sort {
+            attributes.sort = Int16(sort)
+        }
         
         do {
             try context.save()

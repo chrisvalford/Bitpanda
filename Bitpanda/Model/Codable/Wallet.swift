@@ -10,6 +10,6 @@ import Foundation
 
 public struct Wallet: Codable, Identifiable {
     public let id: String
-    public let type: String
+    public var type: String
     public let attributes: WalletAttributes
 }

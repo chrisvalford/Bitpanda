@@ -21,8 +21,8 @@ public class DataAPI {
     public var commodities: [Commodity] = []
     public var fiats: [Fiat] = []
     public var wallets: [Wallet] = []
-    public var commodityWallets: [Wallet] = []
-    public var fiatWallets: [FiatWallet] = []
+    private var commodityWallets: [Wallet] = []
+    private var fiatWallets: [FiatWallet] = []
     
     /// Use the local json
     func fetchLocal() {
@@ -34,18 +34,18 @@ public class DataAPI {
         guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
             fatalError("Couldn't read data.json file")
         }
+        do {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let decoded = try? decoder.decode(CollectionData.self, from: data)
-        commodities = decoded?.wrapper.attributes.commodities ?? []
-        cryptocoins = decoded?.wrapper.attributes.cryptocoins ?? []
-        fiats = decoded?.wrapper.attributes.fiats ?? []
-        wallets = decoded?.wrapper.attributes.wallets ?? []
-        commodityWallets = decoded?.wrapper.attributes.commodityWallets ?? []
-        fiatWallets = decoded?.wrapper.attributes.fiatWallets ?? []
+        let decoded = try decoder.decode(CollectionData.self, from: data)
+        commodities = decoded.wrapper.attributes.commodities
+        cryptocoins = decoded.wrapper.attributes.cryptocoins
+        fiats = decoded.wrapper.attributes.fiats
+        wallets = decoded.wrapper.attributes.wallets
+        commodityWallets = decoded.wrapper.attributes.commodityWallets
+        fiatWallets = decoded.wrapper.attributes.fiatWallets
         
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
-        do {
             for coin in cryptocoins {
                 try coin.save(context: context)
             }
@@ -56,13 +56,13 @@ public class DataAPI {
                 try fiat.save(context: context)
             }
             for wallet in wallets {
-                try wallet.save(context: context)
+                try wallet.save(type: "Wallet", context: context)
             }
             for wallet in commodityWallets {
-                try wallet.save(context: context)
+                try wallet.save(type: "Commodity Wallet", context: context)
             }
             for wallet in fiatWallets {
-                try wallet.save(context: context)
+                try wallet.save(type: "Fiat Wallet", context: context)
             }
         } catch {
             print(error)
@@ -117,6 +117,26 @@ public class DataAPI {
 //        )
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.symbol", ascending: true)]
         var objects: [FiatCD]
+        do {
+            objects = try context.fetch(fetchRequest)
+            return objects
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
+    func allWallets() -> [WalletCD] {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<WalletCD>
+        fetchRequest = WalletCD.fetchRequest()
+        // TODO: Add predicate
+//        fetchRequest.predicate = NSPredicate(
+//            format: "attributes.hasWallets == TRUE"
+//        )
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
+        fetchRequest.propertiesToGroupBy = ["type"]
+        var objects: [WalletCD]
         do {
             objects = try context.fetch(fetchRequest)
             return objects

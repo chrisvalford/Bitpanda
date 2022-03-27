@@ -10,21 +10,22 @@ import CoreData
 import Foundation
 
 extension FiatWalletAttributes {
-    func save(context: NSManagedObjectContext) throws -> FiatWalletAttributesCD {
-        guard let entity = NSEntityDescription.entity(forEntityName: "FiatWalletAttributesCD", in: context) else {
-            throw CoreDataError.createEntityFailed("FiatWalletAttributesCD")
+    func save(context: NSManagedObjectContext) throws -> WalletAttributesCD {
+        guard let entity = NSEntityDescription.entity(forEntityName: "WalletAttributesCD", in: context) else {
+            throw CoreDataError.createEntityFailed("WalletAttributesCD")
         }
-        let attributes = FiatWalletAttributesCD(entity: entity, insertInto: context)
-        attributes.fiatId = self.fiatId
-        attributes.fiatSymbol = self.fiatSymbol
+        let attributes = WalletAttributesCD(entity: entity, insertInto: context)
+        attributes.id = self.fiatId
+        attributes.symbol = self.fiatSymbol
         attributes.balance = self.balance
+        attributes.isDefault = true
         attributes.name = self.name
         attributes.pendingTransactionsCount = NSNumber(integerLiteral: self.pendingTransactionsCount)
-        
+        attributes.walletDeleted = false
         do {
             try context.save()
         } catch {
-            throw CoreDataError.saveFailed("FiatWalletAttributesCD")
+            throw CoreDataError.saveFailed("WalletAttributesCD")
         }
         
         return attributes
