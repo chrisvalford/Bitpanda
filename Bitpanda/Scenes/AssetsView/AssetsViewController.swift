@@ -16,11 +16,6 @@ class AssetsViewController: UIViewController {
     
     private let viewModel = AssetsViewModel()
     
-    let iconTop = 4.0
-    let iconLeft = 0.0
-    let iconWidth = 32.0
-    let iconHeight = 32.0
-    
     lazy var assetSelector: UISegmentedControl = {
         let segmented = UISegmentedControl(items: AssetsSelection.allValues())
         segmented.translatesAutoresizingMaskIntoConstraints = false
@@ -112,17 +107,17 @@ extension AssetsViewController: UITableViewDataSource {
         switch viewModel.selectedAsset {
         case .commodities:
             let cell = tableView.dequeueReusableCell(withIdentifier: assetCellId, for: indexPath) as! AssetTableViewCell
-            cell.viewModel = viewModel.commodityData[indexPath.row]
-            cell.layout()
+            guard let attributes = viewModel.commodityData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = CommodityView(attributes)
             return cell
         case .cryptocoins:
             let cell = tableView.dequeueReusableCell(withIdentifier: cryptocoinCellId, for: indexPath) as! CryptocoinTableViewCell
-            let viewModel = CryptocoinView(viewModel.cryptocoinData[indexPath.row].attributes!)
-            cell.viewModel = viewModel
-            cell.nameView.text = viewModel.name
-            cell.symbolView.text = viewModel.symbol
-            cell.averagePriceView.text = viewModel.averagePrice
-            cell.imageView?.image = ImageCache.image(path: (self.traitCollection.userInterfaceStyle == .dark ? viewModel.iconDark : viewModel.iconLight)!, size: CGSize(width: 32, height: 32))
+            guard let attributes = viewModel.cryptocoinData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = CryptocoinView(attributes)
             return cell
         case .fiats:
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatCellId, for: indexPath) as! FiatTableViewCell

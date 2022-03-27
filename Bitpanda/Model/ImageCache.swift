@@ -1,6 +1,6 @@
 //
 //  JSONCache.swift
-//  ParisForecast (iOS)
+//  Bitpanda
 //
 //  Created by Christopher Alford on 22/2/22.
 //
@@ -20,7 +20,6 @@ import UIKit
 final class ImageCache {
     
     class func image(path: URL, size: CGSize) -> UIImage {
-        // Do we have a cached image?
         if let data = fetch(url: path) {
             guard let image = UIImage(data: data) else {
                 return UIImage()
@@ -40,13 +39,10 @@ final class ImageCache {
         return image ?? UIImage()
     }
 
-    // The forecast interval seems to be 3 hours
-    let expireAfter = TimeInterval(60*10) // TimeInterval((60*60*3) + 10)
+    static let expireAfter = TimeInterval((60*60*3) + 10)
 
     static func add(url: URL, data: Data) {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
-        // select CacheItem where url == url
-        // if not exists save otherwise update
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.predicate = NSPredicate(format: "url == %@", url as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "savedOn", ascending: false)]
@@ -70,7 +66,6 @@ final class ImageCache {
 
     class func fetch(url: URL) -> Data? {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
-        // select CacheItem where url == url
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.predicate = NSPredicate(format: "url == %@", url as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "savedOn", ascending: false)]
@@ -83,7 +78,7 @@ final class ImageCache {
         return nil
     }
 
-    func expire(url: URL) {
+    class func expire(url: URL) {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.includesPropertyValues = false
@@ -99,7 +94,7 @@ final class ImageCache {
         }
     }
 
-    func expireAll() {
+    class func expireAll() {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         // select CacheItem where (savedOn + expireAfter) < .now
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")

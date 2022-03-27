@@ -17,7 +17,23 @@ import UIKit
 
 class AssetTableViewCell: UITableViewCell {
     
-    var viewModel: CommodityView?
+    var viewModel: CommodityView? {
+        didSet {
+            nameView.text = viewModel?.name
+            symbolView.text = viewModel?.symbol
+            averagePriceView.text = viewModel?.averagePrice
+            guard let iconLight = viewModel?.iconLight else {
+                iconView.image = UIImage()
+                return
+            }
+            guard let iconDark = viewModel?.iconDark else {
+                iconView.image = UIImage()
+                return
+            }
+            let icon = ImageCache.image(path: ((self.traitCollection.userInterfaceStyle == .dark ? iconDark : iconLight)), size: CGSize(width: 32, height: 32))
+            iconView.image = icon
+        }
+    }
     
     let iconTop = 4.0
     let iconLeft = 0.0
@@ -59,7 +75,8 @@ class AssetTableViewCell: UITableViewCell {
         return label
     }()
     
-    func layout() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(iconView)
         self.addSubview(nameView)
         self.addSubview(symbolView)
@@ -80,9 +97,8 @@ class AssetTableViewCell: UITableViewCell {
         ])
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -88,6 +88,25 @@ public class DataAPI {
         return []
     }
     
+    func allCommodies() -> [CommodityCD] {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<CommodityCD>
+        fetchRequest = CommodityCD.fetchRequest()
+
+//        fetchRequest.predicate = NSPredicate(
+//            format: "name LIKE %@", "Robert"
+//        )
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "attributes.sort", ascending: true)]
+        var objects: [CommodityCD]
+        do {
+            objects = try context.fetch(fetchRequest)
+            return objects
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
     // "cryptocoin_id": "8", for wallet and commodityWallet
     func walletImage(forId: String) -> (URL?,URL?) {
         if let cryptocoin = cryptocoins.first(where: { $0.id == forId }) {

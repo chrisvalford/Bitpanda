@@ -16,7 +16,7 @@ class AssetsViewModel {
         }
     }
     var fiatData: [FiatView] = []
-    var commodityData: [CommodityView] = []
+    var commodityData: [CommodityCD] = []
     var cryptocoinData: [CryptocoinCD] = []
     
     private var dataApi: DataAPI
@@ -33,13 +33,7 @@ class AssetsViewModel {
         case .cryptocoins:
             cryptocoinData = dataApi.allCryptocoins()
         case .commodities:
-            print("Selected commodities \(dataApi.commodities.count)")
-            commodityData = dataApi.commodities
-                .filter { $0.type == "commodity" }
-                .sorted { $0.attributes.sort < $1.attributes.sort }
-                .map( {
-                    CommodityView($0.attributes)
-                } )
+            commodityData = dataApi.allCommodies()
         case .fiats:
             fiatData = dataApi.fiats
                 .filter({ $0.attributes.hasWallets })

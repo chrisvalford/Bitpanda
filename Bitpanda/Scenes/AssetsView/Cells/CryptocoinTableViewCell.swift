@@ -17,7 +17,23 @@ import UIKit
 
 class CryptocoinTableViewCell: UITableViewCell {
     
-    var viewModel: CryptocoinView?
+    var viewModel: CryptocoinView? {
+        didSet {
+            nameView.text = viewModel?.name
+            symbolView.text = viewModel?.symbol
+            averagePriceView.text = viewModel?.averagePrice
+            guard let iconLight = viewModel?.iconLight else {
+                iconView.image = UIImage()
+                return
+            }
+            guard let iconDark = viewModel?.iconDark else {
+                iconView.image = UIImage()
+                return
+            }
+            let icon = ImageCache.image(path: ((self.traitCollection.userInterfaceStyle == .dark ? iconDark : iconLight)), size: CGSize(width: 32, height: 32))
+            iconView.image = icon
+        }
+    }
     
     let iconTop = 4.0
     let iconLeft = 0.0
@@ -35,7 +51,6 @@ class CryptocoinTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.text = viewModel?.name
         label.sizeToFit()
         return label
     }()
@@ -44,7 +59,6 @@ class CryptocoinTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.text = viewModel?.symbol
         label.sizeToFit()
         return label
     }()
@@ -54,15 +68,12 @@ class CryptocoinTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .right
-        //label.text = "Average price: \(viewModel?.averagePrice ?? "")"
         label.sizeToFit()
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //super.awakeFromNib()
-        // Initialization code
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(iconView)
         self.addSubview(nameView)
         self.addSubview(symbolView)
@@ -77,7 +88,7 @@ class CryptocoinTableViewCell: UITableViewCell {
             symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 60),
             symbolView.widthAnchor.constraint(equalToConstant: 54),
-
+            
             averagePriceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             averagePriceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 8)
         ])
@@ -90,7 +101,7 @@ class CryptocoinTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         viewModel = nil
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
