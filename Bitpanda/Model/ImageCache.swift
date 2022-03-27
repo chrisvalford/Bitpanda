@@ -18,25 +18,33 @@ import UIKit
 */
 
 final class ImageCache {
-
-    static let shared = ImageCache()
-
-    let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
     
     class func image(path: URL, size: CGSize) -> UIImage {
+        // Do we have a cached image?
+        if let data = fetch(url: path) {
+            guard let image = UIImage(data: data) else {
+                return UIImage()
+            }
+            return image
+        }
         let svgView = SVGImageView.init(contentsOf: path)
         svgView.frame = CGRect(origin: CGPoint.zero, size: size)
         UIGraphicsBeginImageContext(svgView.bounds.size)
         svgView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        guard let data = image?.pngData() else {
+            return UIImage()
+        }
+        add(url: path, data: data)
         return image ?? UIImage()
     }
 
     // The forecast interval seems to be 3 hours
     let expireAfter = TimeInterval(60*10) // TimeInterval((60*60*3) + 10)
 
-    func add(url: URL, data: Data) {
+    static func add(url: URL, data: Data) {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         // select CacheItem where url == url
         // if not exists save otherwise update
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
@@ -60,7 +68,8 @@ final class ImageCache {
         }
     }
 
-    func fetch(url: URL) -> Data? {
+    class func fetch(url: URL) -> Data? {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         // select CacheItem where url == url
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.predicate = NSPredicate(format: "url == %@", url as CVarArg)
@@ -75,6 +84,7 @@ final class ImageCache {
     }
 
     func expire(url: URL) {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.includesPropertyValues = false
         request.predicate = NSPredicate(format: "url == %@", url as CVarArg)
@@ -90,6 +100,7 @@ final class ImageCache {
     }
 
     func expireAll() {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         // select CacheItem where (savedOn + expireAfter) < .now
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CacheItem")
         request.includesPropertyValues = false
