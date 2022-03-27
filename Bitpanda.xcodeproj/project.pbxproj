@@ -114,6 +114,7 @@
 		2FD4372A27F0C651002CE06F /* FiatWalletAttributes+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372727F0C58B002CE06F /* FiatWalletAttributes+CD.swift */; };
 		2FD4372C27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */; };
 		2FD4372D27F0DA69002CE06F /* CommodityWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */; };
+		2FD4372F27F0EF6F002CE06F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FD4372E27F0EF6F002CE06F /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		2FD4372527F0C53D002CE06F /* FiatWallet+CD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FiatWallet+CD.swift"; sourceTree = "<group>"; };
 		2FD4372727F0C58B002CE06F /* FiatWalletAttributes+CD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FiatWalletAttributes+CD.swift"; sourceTree = "<group>"; };
 		2FD4372B27F0D9E7002CE06F /* CommodityWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityWalletTableViewCell.swift; sourceTree = "<group>"; };
+		2FD4372E27F0EF6F002CE06F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2FFEBA011AEE0E74006708B4 /* Bitpanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitpanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFEBA181AEE0E74006708B4 /* BitpandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitpandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -400,6 +402,7 @@
 		2FFEB9F81AEE0E74006708B4 = {
 			isa = PBXGroup;
 			children = (
+				2FD4372E27F0EF6F002CE06F /* README.md */,
 				2FC26E1027E9E3BC00BB31AA /* Bitpanda */,
 				2FC26E2E27E9E3CD00BB31AA /* BitpandaTests */,
 				2FFEBA021AEE0E74006708B4 /* Products */,
@@ -524,6 +527,7 @@
 			files = (
 				2FC26E2A27E9E3BC00BB31AA /* Images.xcassets in Resources */,
 				2FC26E2327E9E3BC00BB31AA /* LaunchScreen.xib in Resources */,
+				2FD4372F27F0EF6F002CE06F /* README.md in Resources */,
 				2FC26E2427E9E3BC00BB31AA /* Main.storyboard in Resources */,
 				2F7E2FEC27E9F47A0093B73E /* data.json in Resources */,
 			);
