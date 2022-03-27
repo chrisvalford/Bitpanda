@@ -71,7 +71,6 @@ class AssetsViewController: UIViewController {
 
     @objc
     func reloadData(notification : NSNotification) {
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
         self.tableView.reloadData()
     }
 
@@ -89,6 +88,10 @@ class AssetsViewController: UIViewController {
 }
 
 extension AssetsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewModel.selectedAsset {
         case .cryptocoins:
@@ -104,18 +107,24 @@ extension AssetsViewController: UITableViewDataSource {
         switch viewModel.selectedAsset {
         case .commodities:
             let cell = tableView.dequeueReusableCell(withIdentifier: assetCellId, for: indexPath) as! AssetTableViewCell
-            cell.viewModel = viewModel.commodityData[indexPath.row]
-            cell.layout()
+            guard let attributes = viewModel.commodityData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = CommodityView(attributes)
             return cell
         case .cryptocoins:
             let cell = tableView.dequeueReusableCell(withIdentifier: cryptocoinCellId, for: indexPath) as! CryptocoinTableViewCell
-            cell.viewModel = viewModel.cryptocoinData[indexPath.row]
-            cell.layout()
+            guard let attributes = viewModel.cryptocoinData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = CryptocoinView(attributes)
             return cell
         case .fiats:
             let cell = tableView.dequeueReusableCell(withIdentifier: fiatCellId, for: indexPath) as! FiatTableViewCell
-            cell.viewModel = viewModel.fiatData[indexPath.row]
-            cell.layout()
+            guard let attributes = viewModel.fiatData[indexPath.row].attributes else {
+                return UITableViewCell()
+            }
+            cell.viewModel = FiatView(attributes)
             return cell
         }
     }

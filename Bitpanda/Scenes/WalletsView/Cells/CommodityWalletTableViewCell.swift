@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletTableViewCell: UITableViewCell {
+class CommodityWalletTableViewCell: UITableViewCell {
     
     var viewModel: WalletView?
     

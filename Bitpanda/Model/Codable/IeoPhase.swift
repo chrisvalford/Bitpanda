@@ -13,18 +13,3 @@ public struct IeoPhase: Codable, Identifiable {
     public let type: String
     public let attributes: IeoPhaseAttributes
 }
-
-public struct IeoPhaseAttributes: Codable {
-    public let name: String
-    public let phaseNumber: Int
-    public let startDate: IeoPhaseDate
-    public let endDate: IeoPhaseDate
-    public let maxStock: String
-    public let price: String
-    public let active: Bool
-}
-
-public struct IeoPhaseDate: Codable {
-    public let dateIso8601: String
-    public let unix: String
-}

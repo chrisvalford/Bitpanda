@@ -15,15 +15,14 @@ class AssetsViewModel {
             self.select(assetsSelection: selectedAsset)
         }
     }
-    var fiatData: [FiatView] = []
-    var commodityData: [CommodityView] = []
-    var cryptocoinData: [CryptocoinView] = []
+    var fiatData: [FiatCD] = []
+    var commodityData: [CommodityCD] = []
+    var cryptocoinData: [CryptocoinCD] = []
     
     private var dataApi: DataAPI
     
     init() {
-        dataApi = DataAPI()
-        dataApi.fetchLocal()
+        dataApi = DataAPI.shared
     }
     
     func select(assetsSelection: AssetsSelection) {
@@ -32,28 +31,11 @@ class AssetsViewModel {
         cryptocoinData.removeAll()
         switch assetsSelection {
         case .cryptocoins:
-            print("Selected cryptocoins \(dataApi.cryptocoins.count)")
-            cryptocoinData = dataApi.cryptocoins
-                .filter { $0.type == "cryptocoin" }
-                .sorted { $0.attributes.sort < $1.attributes.sort }
-                .map( {
-                    CryptocoinView($0.attributes)
-                } )
+            cryptocoinData = dataApi.allCryptocoins()
         case .commodities:
-            print("Selected commodities \(dataApi.commodities.count)")
-            commodityData = dataApi.commodities
-                .filter { $0.type == "commodity" }
-                .sorted { $0.attributes.sort < $1.attributes.sort }
-                .map( {
-                    CommodityView($0.attributes)
-                } )
+            commodityData = dataApi.allCommodies()
         case .fiats:
-            fiatData = dataApi.fiats
-                .filter({ $0.attributes.hasWallets })
-                .sorted { $0.attributes.symbol < $1.attributes.symbol }
-                .map( {
-                    FiatView($0.attributes)
-                } )
+            fiatData = dataApi.allFiats()
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AssetsUpdated"), object: nil, userInfo: nil)
     }
