@@ -83,10 +83,10 @@ class CryptocoinTableViewCell: UITableViewCell {
             iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: iconLeft),
             
             nameView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 60),
+            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
             
             symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 60),
+            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
             symbolView.widthAnchor.constraint(equalToConstant: 54),
             
             averagePriceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
