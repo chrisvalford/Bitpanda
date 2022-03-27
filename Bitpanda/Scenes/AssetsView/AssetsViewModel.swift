@@ -17,7 +17,7 @@ class AssetsViewModel {
     }
     var fiatData: [FiatView] = []
     var commodityData: [CommodityView] = []
-    var cryptocoinData: [CryptocoinView] = []
+    var cryptocoinData: [CryptocoinCD] = []
     
     private var dataApi: DataAPI
     
@@ -32,9 +32,6 @@ class AssetsViewModel {
         switch assetsSelection {
         case .cryptocoins:
             cryptocoinData = dataApi.allCryptocoins()
-                .map( {
-                    CryptocoinView($0.attributes!)
-                } )
         case .commodities:
             print("Selected commodities \(dataApi.commodities.count)")
             commodityData = dataApi.commodities

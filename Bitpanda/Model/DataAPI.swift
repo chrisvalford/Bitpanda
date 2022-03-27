@@ -26,6 +26,10 @@ public class DataAPI {
     
     /// Use the local json
     func fetchLocal() {
+        // Hack just for sample data
+        if !allCryptocoins().isEmpty {
+            return
+        }
         let url = Bundle.main.url(forResource: "data", withExtension: ".json")
         guard let dataURL = url, let data = try? Data(contentsOf: dataURL) else {
             fatalError("Couldn't read data.json file")

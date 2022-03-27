@@ -109,7 +109,7 @@ extension AssetsViewController: UITableViewDataSource {
             return cell
         case .cryptocoins:
             let cell = tableView.dequeueReusableCell(withIdentifier: cryptocoinCellId, for: indexPath) as! CryptocoinTableViewCell
-            cell.viewModel = viewModel.cryptocoinData[indexPath.row]
+            cell.viewModel = CryptocoinView(viewModel.cryptocoinData[indexPath.row].attributes!)
             cell.layout()
             return cell
         case .fiats:
