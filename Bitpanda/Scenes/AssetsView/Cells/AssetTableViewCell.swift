@@ -37,8 +37,8 @@ class AssetTableViewCell: UITableViewCell {
     
     let iconTop = 4.0
     let iconLeft = 0.0
-    let iconWidth = 32.0
-    let iconHeight = 32.0
+    let iconWidth = 38.0
+    let iconHeight = 38.0
     
     lazy var iconView: UIImageView = {
         let iv = UIImageView()
@@ -49,7 +49,7 @@ class AssetTableViewCell: UITableViewCell {
     
     lazy var nameView: UILabel = {
         let label = UILabel()
-        label.font = UIFont.italicSystemFont(ofSize: 17)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = viewModel?.name
         label.sizeToFit()
@@ -58,7 +58,7 @@ class AssetTableViewCell: UITableViewCell {
     
     lazy var symbolView: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = viewModel?.symbol
         label.sizeToFit()
@@ -68,7 +68,7 @@ class AssetTableViewCell: UITableViewCell {
     lazy var averagePriceView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.textAlignment = .right
         label.text = "Average price: \(viewModel?.averagePrice ?? "")"
         label.sizeToFit()
@@ -77,23 +77,27 @@ class AssetTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.backgroundColor = UIColor(red: 238.0/255.0, green: 240.0/255.0, blue: 245.0/255.0, alpha: 1.0)
+        contentView.layer.cornerRadius = 8
+        
         self.addSubview(iconView)
         self.addSubview(nameView)
         self.addSubview(symbolView)
         self.addSubview(averagePriceView)
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: iconTop),
-            iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: iconLeft),
+            iconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            iconView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
             
-            nameView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
+            nameView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            nameView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 8),
             
-            symbolView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            symbolView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 16),
+            symbolView.bottomAnchor.constraint(equalTo: nameView.bottomAnchor),
+            symbolView.leftAnchor.constraint(equalTo: nameView.rightAnchor, constant: 8),
             symbolView.widthAnchor.constraint(equalToConstant: 54),
 
-            averagePriceView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
-            averagePriceView.leftAnchor.constraint(equalTo: symbolView.rightAnchor, constant: 8)
+            averagePriceView.topAnchor.constraint(equalTo: nameView.bottomAnchor, constant: 2),
+            averagePriceView.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 8)
         ])
     }
 

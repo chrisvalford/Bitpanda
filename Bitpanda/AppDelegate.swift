@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 #endif
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.backgroundColor = .white
+        window?.rootViewController = TabBarViewController()
+        
         // TODO: Remove this once API is completed and no longer a singleton
         let dataApi = DataAPI.shared
         dataApi.fetchLocal()
