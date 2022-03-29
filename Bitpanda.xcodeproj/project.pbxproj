@@ -68,6 +68,9 @@
 		2F1E234B27E9E6C500399315 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1E234A27E9E6C500399315 /* MapKit.framework */; };
 		2F420BB427EB511700A1023F /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 2F420BB327EB511700A1023F /* PocketSVG */; };
 		2F420BB727EB703D00A1023F /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */; };
+		2F5B8ED427F1D6BD004E9E7D /* BitpandaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B8ED327F1D6BD004E9E7D /* BitpandaNavigationController.swift */; };
+		2F5B8ED527F1D7F6004E9E7D /* BitpandaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B8ED327F1D6BD004E9E7D /* BitpandaNavigationController.swift */; };
+		2F5B8ED627F1DEE6004E9E7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC26E1E27E9E3BC00BB31AA /* Images.xcassets */; };
 		2F6A7BCD27EB346800E107E7 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */; };
 		2F6A7BCE27EB34DE00E107E7 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */; };
 		2F7E2FEC27E9F47A0093B73E /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E2FEB27E9F47A0093B73E /* data.json */; };
@@ -104,7 +107,6 @@
 		2FAED57E27E9F0860067CAE8 /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAED57D27E9F0860067CAE8 /* WalletsViewController.swift */; };
 		2FAED57F27E9F0860067CAE8 /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAED57D27E9F0860067CAE8 /* WalletsViewController.swift */; };
 		2FC26E2327E9E3BC00BB31AA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC26E1227E9E3BC00BB31AA /* LaunchScreen.xib */; };
-		2FC26E2427E9E3BC00BB31AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC26E1427E9E3BC00BB31AA /* Main.storyboard */; };
 		2FC26E2A27E9E3BC00BB31AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC26E1E27E9E3BC00BB31AA /* Images.xcassets */; };
 		2FC26E2B27E9E3BC00BB31AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC26E1F27E9E3BC00BB31AA /* AppDelegate.swift */; };
 		2FC26E3127E9E3CD00BB31AA /* BitpandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC26E2F27E9E3CD00BB31AA /* BitpandaTests.swift */; };
@@ -171,6 +173,7 @@
 		2F0CBDA627EDE79C0038714E /* Fiat+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fiat+CD.swift"; sourceTree = "<group>"; };
 		2F1E234A27E9E6C500399315 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2F420BB627EB703D00A1023F /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
+		2F5B8ED327F1D6BD004E9E7D /* BitpandaNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitpandaNavigationController.swift; sourceTree = "<group>"; };
 		2F6A7BCC27EB346800E107E7 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		2F7E2FEB27E9F47A0093B73E /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		2F7E2FEF27E9F5360093B73E /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
@@ -190,7 +193,6 @@
 		2FAED57A27E9F07B0067CAE8 /* AssetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsViewController.swift; sourceTree = "<group>"; };
 		2FAED57D27E9F0860067CAE8 /* WalletsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletsViewController.swift; sourceTree = "<group>"; };
 		2FC26E1327E9E3BC00BB31AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		2FC26E1527E9E3BC00BB31AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FC26E1E27E9E3BC00BB31AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FC26E1F27E9E3BC00BB31AA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC26E2227E9E3BC00BB31AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -339,9 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC26E1227E9E3BC00BB31AA /* LaunchScreen.xib */,
-				2FC26E1427E9E3BC00BB31AA /* Main.storyboard */,
 				2FC26E1627E9E3BC00BB31AA /* Extensions */,
-				2FC26E1727E9E3BC00BB31AA /* Theme */,
 				2FC26E1B27E9E3BC00BB31AA /* Model */,
 				2FC26E1E27E9E3BC00BB31AA /* Images.xcassets */,
 				2FC26E1F27E9E3BC00BB31AA /* AppDelegate.swift */,
@@ -357,13 +357,6 @@
 				2F0CBD5627EC8EFE0038714E /* String+Currency.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2FC26E1727E9E3BC00BB31AA /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Theme;
 			sourceTree = "<group>";
 		};
 		2FC26E1B27E9E3BC00BB31AA /* Model */ = {
@@ -385,6 +378,7 @@
 				2F6A7BCB27EB345100E107E7 /* AssetsView */,
 				2F0CBD5927EC901D0038714E /* WalletsView */,
 				2F0CBD5A27EC91350038714E /* TabBarViewController.swift */,
+				2F5B8ED327F1D6BD004E9E7D /* BitpandaNavigationController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -528,7 +522,6 @@
 				2FC26E2A27E9E3BC00BB31AA /* Images.xcassets in Resources */,
 				2FC26E2327E9E3BC00BB31AA /* LaunchScreen.xib in Resources */,
 				2FD4372F27F0EF6F002CE06F /* README.md in Resources */,
-				2FC26E2427E9E3BC00BB31AA /* Main.storyboard in Resources */,
 				2F7E2FEC27E9F47A0093B73E /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F7E2FED27E9F47A0093B73E /* data.json in Resources */,
+				2F5B8ED627F1DEE6004E9E7D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +587,7 @@
 				2F0CBD5727EC8EFE0038714E /* String+Currency.swift in Sources */,
 				2F0CBD5127EC81C50038714E /* Cryptocoin.swift in Sources */,
 				2F0CBDA527EDE74A0038714E /* CommodityAttributes+CD.swift in Sources */,
+				2F5B8ED427F1D6BD004E9E7D /* BitpandaNavigationController.swift in Sources */,
 				2F7E2FF627E9FB2A0093B73E /* CollectionData.swift in Sources */,
 				2F0CBD8927EDE1D70038714E /* IeoPhaseDate.swift in Sources */,
 				2FD4372627F0C53D002CE06F /* FiatWallet+CD.swift in Sources */,
@@ -650,6 +645,7 @@
 				2F0CBDB027EE05900038714E /* Commodity+CD.swift in Sources */,
 				2F0CBDB827EE05960038714E /* Fiat+CD.swift in Sources */,
 				2F0CBD8D27EDE21A0038714E /* CryptocoinAttributes+CD.swift in Sources */,
+				2F5B8ED527F1D7F6004E9E7D /* BitpandaNavigationController.swift in Sources */,
 				2F7E2FF427E9F6A00093B73E /* Commodity.swift in Sources */,
 				2F0CBD5527EC84260038714E /* CryptocoinView.swift in Sources */,
 				2FD4372927F0C649002CE06F /* FiatWallet+CD.swift in Sources */,
@@ -675,14 +671,6 @@
 				2FC26E1327E9E3BC00BB31AA /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		2FC26E1427E9E3BC00BB31AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2FC26E1527E9E3BC00BB31AA /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

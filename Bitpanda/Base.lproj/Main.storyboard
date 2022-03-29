@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20018.1"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,10 +17,91 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="Jek-rj-1hl" kind="relationship" relationship="viewControllers" id="buM-W9-HRT"/>
+                        <segue destination="SzB-Pd-i7E" kind="relationship" relationship="viewControllers" id="As3-jj-u1f"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPy-BA-6wx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-587" y="-161"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="TaG-BL-I3D">
+            <objects>
+                <navigationController id="Jek-rj-1hl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qm6-NV-EMr"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Yk-iL-50p">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1gp-IW-v7Z" kind="relationship" relationship="rootViewController" id="bnK-sX-gsG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ve-4w-vSz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="-161"/>
+        </scene>
+        <!--Assets View Controller-->
+        <scene sceneID="hYc-tv-AeH">
+            <objects>
+                <viewController id="1gp-IW-v7Z" customClass="AssetsViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qu3-dE-fCL"/>
+                        <viewControllerLayoutGuide type="bottom" id="pkr-B0-rV7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8HK-b4-ve5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F2J-Tg-Txa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRV-ct-xOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="-161"/>
+        </scene>
+        <!--Wallets View Controller-->
+        <scene sceneID="K1q-0u-C5H">
+            <objects>
+                <viewController id="Wai-9D-aFS" customClass="WalletsViewController" customModule="Bitpanda" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EMi-jr-0fe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y6N-0L-O9V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8qO-uA-EbM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0PP-z8-JIU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9r-fO-gDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="563"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tr8-kz-yin">
+            <objects>
+                <navigationController id="SzB-Pd-i7E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gC3-El-wyi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hQb-nW-tP0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Wai-9D-aFS" kind="relationship" relationship="rootViewController" id="pG9-1l-rv6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qn-RY-obJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125" y="563"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

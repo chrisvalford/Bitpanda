@@ -22,11 +22,17 @@ class TabBarViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // TODO: Need correctly scaled images for the tab bar
-        let tabOne = AssetsViewController()
+        let avc = AssetsViewController()
+        //avc.title = "Assets"
+        let anc = BitpandaNavigationController(rootViewController: avc)
+        let tabOne = anc //AssetsViewController()
         let tabOneBarItem = UITabBarItem(title: "Assets", image: UIImage(named: "commodities"), selectedImage: UIImage(named: "commodities-fil"))
         tabOne.tabBarItem = tabOneBarItem
         
-        let tabTwo = WalletsViewController()
+        let wvc = WalletsViewController()
+        wvc.title = "Wallets"
+        let wnc = BitpandaNavigationController(rootViewController: wvc)
+        let tabTwo = wnc
         let tabTwoBarItem2 = UITabBarItem(title: "Wallets", image: UIImage(named: "wallet"), selectedImage: UIImage(named: "wallet.fill"))
         tabTwo.tabBarItem = tabTwoBarItem2
         

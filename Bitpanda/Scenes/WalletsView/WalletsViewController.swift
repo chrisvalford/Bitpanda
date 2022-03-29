@@ -29,6 +29,12 @@ class WalletsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = .blue
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "BitpandaNavLogo"), for: .default)
+        navigationController?.title = "Wallets"
+
+        
         self.view.addSubview(tableView)
         addContsraints()
         viewModel.fetchedResultsController.delegate = self

@@ -34,6 +34,27 @@ class AssetsViewController: UIViewController {
         return tv
     }()
     
+//    lazy var navigationView: UIView = {
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 120))
+//        let imageView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 130, height: 44)))
+//        imageView.contentMode = .scaleAspectFit
+//        let image = UIImage(named: "BitpandaNavLogo")
+//        imageView.image = image
+//        let stack = UIStackView()
+//        stack.axis = .vertical
+//        stack.distribution = .equalSpacing
+//        stack.addSubview(imageView)
+//        let topLabel = UILabel()
+//        topLabel.text = "Home of Digital Assets"
+//        stack.addSubview(topLabel)
+//        let bottomLabel = UILabel()
+//        bottomLabel.text = "Easy. Fast. Secure."
+//        stack.addSubview(bottomLabel)
+//        view.addSubview(stack)
+//        view.backgroundColor = .gray
+//        return view
+//    }()
+    
 // TODO:
 // The view building process should be completed in loadView()
 // Need to ensure the data has 'empty' values to do this and then populate the table view in viewDidLoad()
@@ -49,6 +70,18 @@ class AssetsViewController: UIViewController {
         self.view.addSubview(assetSelector)
         self.view.addSubview(tableView)
         addContsraints()
+        let navBar = BitpandaNavigationBar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.size.width, height: 120)),
+                                           title: "Home of Digital Assets",
+                                            subTitle: "Easy ● Fast ● Secure")
+        navBar.layoutSubviews()
+        view.addSubview(navBar)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+        if #available(iOS 11.0, *) {
+             self.additionalSafeAreaInsets.top = 80
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
