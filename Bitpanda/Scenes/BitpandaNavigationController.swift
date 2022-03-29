@@ -35,13 +35,15 @@ class BitpandaNavigationBar: UINavigationBar {
     var subTitle: String
     
     lazy var navigationView: UIView = {
-        let view = UIView(frame: CGRect(x: aFrame.origin.x + 16,
-                                        y: aFrame.origin.y + 32,
-                                        width: aFrame.size.width - 32,
-                                        height: aFrame.size.height - 28))
+        let view = UIView(frame: CGRect(x: aFrame.origin.x,
+                                        y: aFrame.origin.y,
+                                        width: aFrame.size.width,
+                                        height: aFrame.size.height - 20))
+        view.translatesAutoresizingMaskIntoConstraints = false
 
         let imageView = UIImageView(image:UIImage(named: "BitpandaNavLogo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         imageView.sizeToFit()
     
         let topLabel = UILabel()
@@ -59,14 +61,15 @@ class BitpandaNavigationBar: UINavigationBar {
         let stack = UIStackView(arrangedSubviews: [imageView, topLabel, bottomLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
+        stack.spacing = 2
         stack.alignment = .center
         stack.distribution = .fill
-        view.sizeToFit()
-        view.addSubview(stack)
         stack.sizeToFit()
+        view.addSubview(stack)
+        view.sizeToFit()
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.topAnchor),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4),
             stack.leftAnchor.constraint(equalTo: view.leftAnchor),
             stack.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
@@ -80,9 +83,9 @@ class BitpandaNavigationBar: UINavigationBar {
         super.init(frame: frame)
         self.addSubview(navigationView)
         NSLayoutConstraint.activate([
-            navigationView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
+            navigationView.topAnchor.constraint(equalTo: topAnchor, constant: 36),
             navigationView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            navigationView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            navigationView.leftAnchor.constraint(equalTo: leftAnchor), //, constant: 16),
             navigationView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
@@ -94,6 +97,6 @@ class BitpandaNavigationBar: UINavigationBar {
 
 //extension UINavigationBar {
 //    public override func sizeThatFits(_ size: CGSize) -> CGSize {
-//        return CGSize(width: frame.width, height: 120)
+//        return CGSize(width: frame.width, height: 130)
 //    }
 //}
