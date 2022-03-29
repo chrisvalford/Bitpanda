@@ -27,10 +27,12 @@ class AssetsViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.dataSource = self
+        tv.delegate = self
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(AssetTableViewCell.self, forCellReuseIdentifier: assetCellId)
         tv.register(CryptocoinTableViewCell.self, forCellReuseIdentifier: cryptocoinCellId)
         tv.register(FiatTableViewCell.self, forCellReuseIdentifier: fiatCellId)
+        tv.separatorStyle = .none
         return tv
     }()
     
@@ -49,7 +51,7 @@ class AssetsViewController: UIViewController {
         self.view.addSubview(assetSelector)
         self.view.addSubview(tableView)
         addContsraints()
-        let navBar = BitpandaNavigationBar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.size.width, height: 130)),
+        let navBar = BitpandaNavigationBar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.size.width, height: 132)),
                                            title: "Home of Digital Assets",
                                             subTitle: "Easy • Fast • Secure")
         navBar.layoutSubviews()
@@ -139,6 +141,30 @@ extension AssetsViewController: UITableViewDataSource {
             cell.viewModel = FiatView(attributes)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        let verticalPadding: CGFloat = 8
+
+        let maskLayer = CALayer()
+        maskLayer.cornerRadius = 10    //if you want round edges
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        cell.layer.mask = maskLayer
+    }
+}
+
+extension AssetsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt: IndexPath) -> CGFloat {
+        return 62
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 62
+
+       // Use the default size for all other rows.
+//       return UITableView.automaticDimension
     }
 }
 

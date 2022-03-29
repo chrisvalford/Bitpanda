@@ -48,28 +48,28 @@ class BitpandaNavigationBar: UINavigationBar {
     
         let topLabel = UILabel()
         topLabel.translatesAutoresizingMaskIntoConstraints = false
-        topLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        topLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         topLabel.text = title
         topLabel.sizeToFit()
         
         let bottomLabel = UILabel()
         bottomLabel.translatesAutoresizingMaskIntoConstraints = false
-        bottomLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        bottomLabel.font = UIFont.preferredFont(forTextStyle: .body)
         bottomLabel.text = subTitle
         bottomLabel.sizeToFit()
         
         let stack = UIStackView(arrangedSubviews: [imageView, topLabel, bottomLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 2
+        stack.spacing = 0
         stack.alignment = .center
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.sizeToFit()
         view.addSubview(stack)
         view.sizeToFit()
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.topAnchor),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
             stack.leftAnchor.constraint(equalTo: view.leftAnchor),
             stack.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
@@ -83,9 +83,9 @@ class BitpandaNavigationBar: UINavigationBar {
         super.init(frame: frame)
         self.addSubview(navigationView)
         NSLayoutConstraint.activate([
-            navigationView.topAnchor.constraint(equalTo: topAnchor, constant: 36),
-            navigationView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            navigationView.leftAnchor.constraint(equalTo: leftAnchor), //, constant: 16),
+            navigationView.topAnchor.constraint(equalTo: topAnchor, constant: 32),
+            navigationView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
+            navigationView.leftAnchor.constraint(equalTo: leftAnchor),
             navigationView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
